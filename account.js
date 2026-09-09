@@ -1,7 +1,7 @@
 const DATA={
   xinglover:{user:'看星星的人',pass:'DZMTQRMOZM2008'},
   shangxin:{user:'伤心的太极端了吧',pass:'SZRQRMTSFZ997'},
-  xingxing:{user:'星星493',pass:'35971804102'}
+  xingxing:{user:'星星493',pass:'35971808102'}
 };
 const ORDER={xinglover:0,xingxing:1,shangxin:2};
 function progress(){return Number(localStorage.getItem('haijinghua_progress')||0)}
