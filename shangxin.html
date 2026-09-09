@@ -7,107 +7,18 @@
 <link rel="stylesheet" href="account.css">
 </head>
 <body data-account="shangxin">
-<header class="top">
-<a class="logo" href="chengguan.html">千度粘吧</a>
-<form class="search" action="search.html">
-<input name="kw" placeholder="搜索贴吧、帖子或用户">
-<button>🔍</button>
-</form>
-</header>
+<header class="top"><a class="logo" href="chengguan.html">千度粘吧</a><form class="search" action="search.html"><input name="kw" placeholder="搜索贴吧、帖子或用户"><button>🔍</button></form></header>
 <main class="shell">
-<section class="card">
-<div class="cover">
-</div>
-<div class="profile">
-<div class="avatar" style="background:#8d83c7">写</div>
-<div class="bio">
-<h1>伤心的太极端了吧</h1>
-<p>账号 ID：sadwriter997　吧龄 5.7 年　关注 14</p>
-</div>
-<button class="login" onclick="openLogin()">登录此账号</button>
-</div>
-<nav class="tabs">
-<button class="tab active" onclick="showTab('posts',this)">帖子</button>
-<button class="tab" onclick="showTab('about',this)">资料</button>
-<button class="tab" onclick="showTab('drafts',this)">草稿箱<span class="badge">4</span>
-</button>
-</nav>
-</section>
-<section id="posts" class="panel active">
-<article class="item">
-<h3>
-<a href="oldpage6.html">重看《海镜花》</a>
-</h3>
-<div class="meta">2026-06-09 · 一路向城关吧</div>
-<div class="text">以前觉得外面的朵朵做得不对，现在想想，她可能只是不想回去。</div>
-</article>
-<article class="item">
-<h3>
-<a href="oldpage10.html">写给小时候的自己</a>
-</h3>
-<div class="meta">2026-06-08 · 一路向城关吧</div>
-<div class="text">你觉得不舒服，是对的。你觉得是自己的问题，不是的。</div>
-</article>
-</section>
-<section id="about" class="panel">
-<div class="item">
-<div class="text">写故事的人。<br>最近修改资料：2026-06-16<br>曾用昵称：仅自己可见</div>
-</div>
-</section>
-<section id="drafts" class="panel">
-<div class="private" data-locked>草稿箱仅自己可见。登录后查看。<br>
-<a href="draft-recovery.html">无法登录？查看账号找回记录</a>
-</div>
-<div data-private hidden>
-<article class="item">
-<h3>未发布：名字不是镜子</h3>
-<div class="meta">最后编辑 2026-06-16 00:19</div>
-<div class="text">他们都以为只要换一个名字，就能把镜子里的那个人留在过去。可老师还记得，档案还记得，电影也记得。只有同学们说不记得。<br>
-<br>我以前叫王瑾岚。离开特训学校以后，我给自己取名王萱萱。我不想每次听到旧名字，都想起学校、拍摄和那份说我“厌学”的档案。我没有否认过去，只是想自己决定以后叫什么。</div>
-</article>
-<article class="item">
-<h3>未发布：关于器材室</h3>
-<div class="meta">最后编辑 2026-06-12 02:06</div>
-<div class="text">那天原本是《海镜花》真人版的拍摄。导演让其他人先出去，门从里面锁上，并在拍摄过程中做出了伤害我的事。此后我害怕再见到学校和剧组里的人，也无法正常回去上课。后来所有人都说我是因为“情绪问题”休学，特训学校的入校报告更把这一切写成了“厌学”，却没有一个字说我为什么不敢回去。</div>
-</article>
-<article class="item">
-<h3>未发布：结局备忘</h3>
-<div class="meta">最后编辑 2026-06-09 22:40</div>
-<div class="text">朵朵从镜子里出来以后，注销了“土豆汤汤”，藏起了“星星493”，后来又用“伤心的太极端了吧”继续写。我有时会用“星星493”回复现在的账号。说白了，就是没人安慰我的时候，我换个账号安慰自己。结尾不能写她获救了。她只是终于能替自己说话。存档入口：网页时光机；检索名必须写《海镜花》。</div>
-</article>
-<article class="item">
-<h3>未发布：我叫王萱萱</h3>
-<div class="meta">最后编辑 2026-06-16 00:27</div>
-<div class="text">档案里的王瑾岚、旧帖里的星星493、已经注销的土豆汤汤，还有现在写下这些话的人，都是我。导演在拍摄中伤害了我，我因此无法回到学校；他们却把原因删掉，只留下“厌学”两个字。离开特训学校以后，我决定称自己为王萱萱。我不是想装作什么都没发生，只是不想再让别人替我决定名字。<br>
-<br>如果要发布，就用这个名字。</div>
-</article>
-<article class="item">
-<h3>未发布：教官账号</h3>
-<div class="meta">最后编辑 2026-06-16 00:31</div>
-<div class="text">我离开以后他还给我发过消息，叫我不要乱说。教官的登录线索，之前在那个“单亲妈妈”发的帖子截图里见过：微信号就是教师账号，绑定电话按登录页提示转换成十六进制就是初始密码。<br><br><a href="ruomiao.html">先去查看“单亲妈妈”的帖子截图 →</a><br><a href="texun-login.html?teacher=1">已经找到线索，前往教师登录 →</a></div>
-</article>
-<div class="publish-box">
-<p class="publish-note" data-final-gate>最终发布尚未开放：请先进入教官账号，查看他留下的私信证据。</p>
-<p class="publish-note">这是草稿箱中最后一篇未发布的内容。发布后将进入结局，并且无法在本页面撤回。</p>
-<a class="publish-btn" data-publish hidden href="ending.html" onclick="return publishEnding()">发布</a>
-</div>
-</div>
-</section>
-</main>
-<div id="modal" class="modal">
-<form class="dialog" onsubmit="return login('shangxin')">
-<button type="button" class="close" onclick="closeLogin()">×</button>
-<h2>账号登录</h2>
-<input id="account" autocomplete="username" placeholder="用户名">
-<input id="pass" type="password" placeholder="密码">
-<p class="hint">提示：把《海镜花》写成大写拼音，再按【953】的方法转换字母，帖子编号放在最后。</p>
-<button class="primary">登录</button>
-<div id="error" class="notice">
-</div>
-</form>
-</div>
-<footer class="foot">©2026 千度粘吧 · 个人主页</footer>
-<script src="account.js">
-</script>
-</body>
-</html>
+<section class="card"><div class="cover"></div><div class="profile"><div class="avatar" style="background:#8d83c7">写</div><div class="bio"><h1>伤心的太极端了吧</h1><p>账号 ID：sadwriter997　吧龄 5.7 年　关注 14</p></div><button class="login" onclick="openLogin()">登录此账号</button></div><nav class="tabs"><button class="tab active" onclick="showTab('posts',this)">帖子</button><button class="tab" onclick="showTab('about',this)">资料</button><button class="tab" onclick="showTab('drafts',this)">草稿箱<span class="badge">4</span></button></nav></section>
+<section id="posts" class="panel active"><article class="item"><h3><a href="oldpage6.html">重看《海镜花》</a></h3><div class="meta">2026-06-09 · 一路向城关吧</div><div class="text">以前觉得外面的朵朵做得不对，现在想想，她可能只是不想回去。</div></article><article class="item"><h3><a href="oldpage10.html">写给小时候的自己</a></h3><div class="meta">2026-06-08 · 一路向城关吧</div><div class="text">你觉得不舒服，是对的。你觉得是自己的问题，不是的。</div></article></section>
+<section id="about" class="panel"><div class="item"><div class="text">写故事的人。<br>最近修改资料：2026-06-16<br>曾用昵称：仅自己可见</div></div></section>
+<section id="drafts" class="panel"><div class="private" data-locked>草稿箱仅自己可见。登录后查看。<br><a href="draft-recovery.html">无法登录？查看账号找回记录</a></div><div data-private hidden>
+<article class="item"><h3>未发布：名字不是镜子</h3><div class="meta">最后编辑 2026-06-16 00:19</div><div class="text">他们都以为只要换一个名字，就能把镜子里的那个人留在过去。可老师还记得，档案还记得，电影也记得。只有同学们说不记得。<br><br>我以前叫王瑾岚。离开特训学校以后，我给自己取名王萱萱。我不想每次听到旧名字，都想起学校、拍摄和那份说我“厌学”的档案。我没有否认过去，只是想自己决定以后叫什么。</div></article>
+<article class="item"><h3>未发布：关于器材室</h3><div class="meta">最后编辑 2026-06-12 02:06</div><div class="text">那天原本是《海镜花》真人版的拍摄。导演让其他人先出去，门从里面锁上，并在拍摄过程中做出了伤害我的事。此后我害怕再见到学校和剧组里的人，也无法正常回去上课。后来所有人都说我是因为“情绪问题”休学，特训学校的入校报告更把这一切写成了“厌学”，却没有一个字说我为什么不敢回去。</div></article>
+<article class="item"><h3>未发布：结局备忘</h3><div class="meta">最后编辑 2026-06-09 22:40</div><div class="text">朵朵从镜子里出来以后，注销了“土豆汤汤”，藏起了“星星493”，后来又用“伤心的太极端了吧”继续写。我有时会用“星星493”回复现在的账号。说白了，就是没人安慰我的时候，我换个账号安慰自己。结尾不能写她获救了。她只是终于能替自己说话。存档入口：网页时光机；检索名必须写《海镜花》。</div></article>
+<article class="item"><h3>未发布：我叫王萱萱</h3><div class="meta">最后编辑 2026-06-16 00:27</div><div class="text">档案里的王瑾岚、旧帖里的星星493、已经注销的土豆汤汤，还有现在写下这些话的人，都是我。导演在拍摄中伤害了我，我因此无法回到学校；他们却把原因删掉，只留下“厌学”两个字。离开特训学校以后，我决定称自己为王萱萱。我不是想装作什么都没发生，只是不想再让别人替我决定名字。<br><br>如果要发布，就用这个名字。</div></article>
+<article class="item"><h3>未发布：教官账号</h3><div class="meta">最后编辑 2026-06-16 00:31</div><div class="text">我离开以后他还给我发过消息，叫我不要乱说。教官的登录线索，之前在那个“单亲妈妈”发的帖子截图里见过：微信号就是教师账号，绑定电话按登录页提示转换成十六进制就是初始密码。<br><br><a href="ruomiao.html">先去查看“单亲妈妈”的帖子截图 →</a><br><a href="texun-login.html?teacher=1" onclick="return unlockTeacherClue()">已经找到线索，前往教师登录 →</a></div></article>
+<div class="publish-box"><p class="publish-note" data-final-gate>最终发布尚未开放：请先进入教官账号，查看他留下的私信证据。</p><p class="publish-note">这是草稿箱中最后一篇未发布的内容。发布后将进入结局，并且无法在本页面撤回。</p><a class="publish-btn" data-publish hidden href="ending.html" onclick="return publishEnding()">发布</a></div>
+</div></section></main>
+<div id="modal" class="modal"><form class="dialog" onsubmit="return login('shangxin')"><button type="button" class="close" onclick="closeLogin()">×</button><h2>账号登录</h2><input id="account" autocomplete="username" placeholder="用户名"><input id="pass" type="password" placeholder="密码"><p class="hint">提示：把《海镜花》写成大写拼音，再按【953】的方法转换字母，帖子编号放在最后。</p><button class="primary">登录</button><div id="error" class="notice"></div></form></div>
+<footer class="foot">©2026 千度粘吧 · 个人主页</footer><script src="account.js"></script></body></html>
