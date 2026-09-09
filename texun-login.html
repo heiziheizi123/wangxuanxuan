@@ -409,17 +409,19 @@ a{
     <form onsubmit="return loginParent()">
 
       <div class="row">
-        <label>家长登记编号</label>
+        <label>手机号码</label>
 
         <input
           id="phone"
           type="text"
-          placeholder="请输入登记编号"
+          placeholder="请输入登记手机号"
+          pattern="[0-9]{11}"
+          maxlength="11"
           required
         >
 
         <div class="hint">
-          请输入报名时生成的家长登记编号，系统将自动验证身份
+          请输入报名时预留的手机号码，系统将自动验证身份
         </div>
       </div>
 
@@ -430,8 +432,8 @@ a{
     </form>
 
     <div class="notice">
-      提示：仅支持已在招生办登记的家长编号登录。
-      如编号遗失，请联系招生办公室更新信息。
+      提示：仅支持已在招生办登记的手机号登录。
+      如号码已更换，请联系招生办公室更新信息。
     </div>
 
   </div>
@@ -481,7 +483,7 @@ a{
     </form>
 
     <div class="notice">
-      提示：教师账号与内部工号绑定，初始密码为编号的十六进制，请在个人中心更改密码。
+      提示：账号与微信号绑定，初始密码为绑定电话的十六进制，请在个人中心更改密码。
     </div>
 
   </div>
@@ -527,11 +529,11 @@ function loginParent(){
   const phone =
     document.getElementById("phone").value.trim();
 
-  const correctAnswer = "CG-PARENT-2008";
+  const correctAnswer = "17708263443";
 
   if(phone !== correctAnswer){
 
-    alert("家长编号错误，请重新输入");
+    alert("手机号错误，请重新输入");
 
     return false;
   }
@@ -565,14 +567,14 @@ function loginTeacher(){
 
   /*
     教师账号：
-    190714
+    19071436227
 
-    190714 转换为十六进制：
-    2e8fa
+    19071436227 转换为十六进制：
+    470bf05c3
   */
 
-  const correctUser = "JGY-W0714";
-  const correctPass = "2e8fa";
+  const correctUser = "wxid_1djaf32Ke";
+  const correctPass = "470bf05c3";
 
   if(user !== correctUser || pass !== correctPass){
 
