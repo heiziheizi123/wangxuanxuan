@@ -409,20 +409,17 @@ a{
     <form onsubmit="return loginParent()">
 
       <div class="row">
-        <label>手机号码</label>
+        <label>家长登记编号</label>
 
         <input
           id="phone"
-          type="tel"
-          inputmode="numeric"
-          placeholder="请输入登记手机号"
-          pattern="[0-9]{11}"
-          maxlength="11"
+          type="text"
+          placeholder="请输入登记编号"
           required
         >
 
         <div class="hint">
-          请输入报名时预留的手机号码，系统将自动验证身份
+          请输入报名时生成的家长登记编号，系统将自动验证身份
         </div>
       </div>
 
@@ -433,8 +430,8 @@ a{
     </form>
 
     <div class="notice">
-      提示：仅支持已在招生办登记的手机号登录。
-      如号码已更换，请联系招生办公室更新信息。
+      提示：仅支持已在招生办登记的家长编号登录。
+      如编号遗失，请联系招生办公室更新信息。
     </div>
 
   </div>
@@ -451,8 +448,7 @@ a{
 
         <input
           id="teacherUser"
-          type="tel"
-          inputmode="numeric"
+          type="text"
           placeholder="请输入教师账号"
           autocomplete="username"
           required
@@ -485,7 +481,7 @@ a{
     </form>
 
     <div class="notice">
-      提示：账号与微信号绑定，初始密码应为电话的16进制，请在个人中心更改密码。
+      提示：教师账号与内部工号绑定，初始密码为编号的十六进制，请在个人中心更改密码。
     </div>
 
   </div>
@@ -531,11 +527,11 @@ function loginParent(){
   const phone =
     document.getElementById("phone").value.trim();
 
-  const correctAnswer = "17708263443";
+  const correctAnswer = "CG-PARENT-2008";
 
   if(phone !== correctAnswer){
 
-    alert("手机号错误，请重新输入");
+    alert("家长编号错误，请重新输入");
 
     return false;
   }
@@ -556,6 +552,11 @@ function loginParent(){
 
 function loginTeacher(){
 
+  if(Number(localStorage.getItem("haijinghua_progress") || 0) < 3){
+    alert("教师账号线索尚未解锁。请按顺序查看：看星星的人 → 星星493 → 伤心的太极端了吧。");
+    return false;
+  }
+
   const user =
     document.getElementById("teacherUser").value.trim();
 
@@ -564,14 +565,14 @@ function loginTeacher(){
 
   /*
     教师账号：
-    19071436227
+    190714
 
-    19071436227 转换为十六进制：
-    470bf05c3
+    190714 转换为十六进制：
+    2e8fa
   */
 
-  const correctUser = "wxid_1djaf32Ke";
-  const correctPass = "470bf05c3";
+  const correctUser = "JGY-W0714";
+  const correctPass = "2e8fa";
 
   if(user !== correctUser || pass !== correctPass){
 
@@ -582,9 +583,15 @@ function loginTeacher(){
 
   localStorage.setItem("teacherUser",user);
 
+  localStorage.setItem("haijinghua_progress","4");
+
   location.href = "teac.html";
 
   return false;
+}
+
+if(new URLSearchParams(location.search).get("teacher") === "1"){
+  switchTab("teacher");
 }
 
 </script>
