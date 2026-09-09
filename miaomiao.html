@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 核心：加入视口标签，让移动端浏览器按真实像素渲染 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>苗苗（中国内地女演员）_百度百科</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            margin: 0;
+            padding: 0; /* 移除外层固定内边距 */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /* 词条头部 */
+        .lemma-header {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .lemma-title {
+            font-size: 32px;
+            font-weight: 400;
+            margin: 0;
+            color: #000;
+        }
+        .lemma-sub {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        /* 布局控制 - 默认PC端双栏 */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .left-content {
+            width: 73%;
+        }
+        .right-content {
+            width: 25%;
+        }
+        /* 概述与正文 */
+        .lemma-summary {
+            font-size: 15px;
+            text-indent: 2em;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: justify;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 400;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        p {
+            font-size: 15px;
+            text-indent: 2em;
+            margin: 12px 0;
+            text-align: justify;
+        }
+        /* 列表与表格 */
+        ul {
+            padding-left: 20px;
+            font-size: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        /* 表格响应式外壳 */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto; /* 屏幕太窄时支持横向滚动，不撑破页面 */
+            -webkit-overflow-scrolling: touch;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 450px; /* 保证表格内容有基本的舒展空间 */
+        }
+        th, td {
+            border: 1px solid #e6e6e6;
+            padding: 10px 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #fbfbfb;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        /* 百科基本信息栏(PC端) */
+        .infobox {
+            background-color: #fcfcfc;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            font-size: 13px;
+        }
+        .infobox-image {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+        }
+        .infobox-title {
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 2px solid #136ec2;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #136ec2;
+        }
+        .infobox-grid {
+            display: flex;
+            flex-direction: column;
+        }
+        .infobox-item {
+            margin-bottom: 8px;
+            display: flex;
+            line-height: 1.4;
+        }
+        .infobox-label {
+            color: #666;
+            width: 75px;
+            flex-shrink: 0;
+        }
+        .infobox-value {
+            color: #333;
+            flex-grow: 1;
+        }
+        /* 文章内嵌图片 */
+        .inline-image-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .inline-image-box img {
+            max-width: 100%; /* 移动端自适应宽度 */
+            width: auto;
+            max-height: 400px;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+        .image-caption {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* ==========================================================================
+           ⚡ 移动端兼容媒体查询 (针对屏幕宽度小于 768px 的设备，如手机)
+           ========================================================================== */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px 12px; /* 缩小两边留白 */
+            }
+            .lemma-title {
+                font-size: 26px; /* 稍微缩小标题，防止长名字折行 */
+            }
+            /* 1. 改变流向：双栏变单栏 */
+            .main-content {
+                flex-direction: column; 
+            }
+            .left-content {
+                width: 100%; /* 正文占满全面 */
+                order: 2;    /* 调整顺序：在手机端，信息栏一般放在概述后面，或者正文最后。这里让正文先走 */
+            }
+            .right-content {
+                width: 100%; /* 信息栏占满宽度 */
+                order: 1;    /* 让基本信息栏在手机端优先排在上方（类似手机百科） */
+                margin-bottom: 25px;
+            }
+            /* 2. 优化手机端基本信息栏：改成两栏并排，更省空间 */
+            .infobox {
+                padding: 12px;
+                background-color: #f8f9fa;
+            }
+            .infobox-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* 手机端内部信息变成双列布局 */
+                gap: 8px 15px;
+            }
+            .infobox-item {
+                margin-bottom: 0;
+                font-size: 13px;
+            }
+            .infobox-label {
+                width: 60px; /* 稍微缩短标签宽度 */
+            }
+            /* 3. 头图大小控制 */
+            .infobox-image img {
+                max-height: 250px;
+                width: auto;
+            }
+            /* 4. 调整段落字体和间距 */
+            p, ul, .lemma-summary {
+                font-size: 14px; /* 手机端14px更适合阅读 */
+            }
+            .section-title {
+                font-size: 18px;
+                margin-top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 词条头部 -->
+    <div class="lemma-header">
+        <h1 class="lemma-title">苗苗</h1>
+        <div class="lemma-sub">（中国内地女演员）</div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        
+        <!-- 右侧基本信息栏：在手机端会通过 order:1 自动弹到最上方 -->
+        <div class="right-content">
+            <div class="infobox">
+                <div class="infobox-title">基本信息</div>
+                <div class="infobox-image">
+                    <img src="miaomiao1.jpg" alt="苗苗个人形象照">
+                </div>
+                <div class="infobox-grid">
+                    <div class="infobox-item">
+                        <div class="infobox-label">中文名</div>
+                        <div class="infobox-value">林苗苗</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">艺名</div>
+                        <div class="infobox-value">苗苗</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">国籍</div>
+                        <div class="infobox-value">中国</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">出生地</div>
+                        <div class="infobox-value">江州市城关区</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">居住地</div>
+                        <div class="infobox-value">江州市望月区</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">出生日期</div>
+                        <div class="infobox-value">2007年8月15日</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">星座</div>
+                        <div class="infobox-value">狮子座</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">职业</div>
+                        <div class="infobox-value">演员、广告模特</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">毕业院校</div>
+                        <div class="infobox-value">江州市艺术中学</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">代表作品</div>
+                        <div class="infobox-value">《妈妈的便当》<br>《小尾巴》</div>
+                    </div>
+                    <div class="infobox-item">
+                        <div class="infobox-label">活跃年代</div>
+                        <div class="infobox-value">2014年至今</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 左侧正文 -->
+        <div class="left-content">
+            <div class="lemma-summary">
+                苗苗（2007年8月15日—），本名林苗苗，中国内地女童星、演员。因2014年出演公益微电影《妈妈的便当》中的“小月”一角进入大众视野，凭借自然灵动的表演被网友称为“治愈系小天使”。
+            </div>
+
+            <div class="section-title">早年经历</div>
+            <p>苗苗出生于江州市城关区，后随家人迁居至江州市望月区。父亲林方是电视剧导演，母亲杨苗是话剧演员。受家庭熏陶，3岁起学习儿童舞蹈与朗诵，4岁被星探发掘拍摄首支商业广告。</p>
+            <p>幼儿园期间多次参加市级少儿才艺大赛，获江州市“未来之星”幼儿组朗诵金奖。</p>
+
+            <div class="inline-image-box">
+                <img src="miaomiao2.jpg" alt="苗苗舞台剧照">
+                <div class="image-caption">图：苗苗在江州市少年才艺大赛上的舞台留影</div>
+            </div>
+
+            <div class="section-title">演艺经历</div>
+            <p><strong>2014年：</strong>通过海选出演公益微电影《妈妈的便当》，饰演留守儿童“小月”，片中的哭戏镜头被多家电视台报道。同年签约“童星梦工场”经纪公司。</p>
+            <p><strong>2015年：</strong>参演都市剧《邻居家的姐姐》，饰演童年女主角。为某品牌儿童乳酸菌饮料拍摄的电视广告在央视少儿频道高频播出，知名度进一步提升。</p>
+            <p><strong>2016年：</strong>主演儿童成长电影《小尾巴》，饰演倔强却善良的乡下女孩“草草”，获第12届华语青年影像论坛“最佳儿童演员”提名。</p>
+            
+            <div class="inline-image-box">
+                <img src="miaomiao3.jpg" alt="苗苗电影剧照">
+                <div class="image-caption">图：电影《小尾巴》中饰演“草草”的苗苗</div>
+            </div>
+
+            <p><strong>2018年：</strong>在公益短片《星星的孩子》中饰演自闭症儿童，被中国儿童少年基金会授予“爱心小天使”称号。</p>
+            <p><strong>2020年：</strong>因学业暂缓拍戏，仅参与配音工作与公益广告拍摄。</p>
+
+            <div class="section-title">主要作品</div>
+            
+            <h3>参演电影</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>上映时间</th>
+                            <th>电影名称</th>
+                            <th>扮演角色</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2018年</td>
+                            <td>《星星的孩子》（短片）</td>
+                            <td>宁宁</td>
+                        </tr>
+                        <tr>
+                            <td>2016年</td>
+                            <td>《小尾巴》</td>
+                            <td>草草</td>
+                        </tr>
+                        <tr>
+                            <td>2014年</td>
+                            <td>《妈妈的便当》</td>
+                            <td>小月</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>参演电视剧</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>首播时间</th>
+                            <th>剧名</th>
+                            <th>扮演角色</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2015年</td>
+                            <td>《邻居家的姐姐》</td>
+                            <td>童年安心</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>广告代言</h3>
+            <ul>
+                <li>某品牌儿童乳酸菌饮料（2015—2017）</li>
+                <li>某学习机（2016）</li>
+                <li>某少儿羽绒服（2017）</li>
+            </ul>
+
+            <div class="section-title">获奖记录</div>
+            <ul>
+                <li>2015年 江州市“童星闪耀”少儿才艺大赛 最佳上镜奖</li>
+                <li>2016年 第12届华语青年影像论坛 最佳儿童演员提名</li>
+                <li>2018年 中国儿童少年基金会 “爱心小天使”称号</li>
+            </ul>
+
+            <div class="section-title">社会活动</div>
+            <p>2016年参与“为山区孩子送冬衣”公益活动；2018年录制关爱自闭症儿童公益歌曲《星星的歌》；2020年为抗击新冠疫情录制儿童洗手宣传短片。</p>
+
+            <div class="section-title">个人生活</div>
+            <p>苗苗现与家人居住在江州市望月区，小学就读于望月区第一小学，文化课成绩优秀，擅长钢琴与书法。2021年进入江州市艺术中学表演专业学习。业余时间喜欢阅读和滑冰，养有一只柯基犬。</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

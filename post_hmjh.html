@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求资源！想起来小时候看过的一个动画片_千度粘吧</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; background-color: #dee4ed; color: #333; }
+        
+        /* 顶部蓝色通栏 */
+        .tb-header { background: #2d8cf0; height: 40px; display: flex; align-items: center; padding: 0 50px; font-size: 12px; }
+        .tb-header a { color: #fff; text-decoration: none; margin-right: 15px; opacity: 0.9; }
+        .tb-header a:hover { opacity: 1; text-decoration: underline; }
+
+        /* 头部搜索区域 */
+        .search-section { background: #fff; padding: 20px 50px; border-bottom: 1px solid #e4e6eb; display: flex; align-items: center; }
+        .logo-box { font-size: 24px; font-weight: bold; color: #2d8cf0; margin-right: 30px; text-decoration: none; letter-spacing: -2px; }
+        .search-form-mock { display: flex; width: 500px; }
+        .search-input-mock { flex: 1; height: 34px; padding: 0 10px; border: 1px solid #ccc; font-size: 14px; outline: none; }
+        .search-btn-mock { background: #2d8cf0; color: #fff; border: none; width: 80px; height: 34px; font-size: 14px; font-weight: bold; cursor: pointer; }
+
+        /* 帖子主体容器 */
+        .post-container { max-width: 1000px; margin: 20px auto; background: #fff; border: 1px solid #e1e4e6; }
+        
+        /* 帖子标题栏 */
+        .post-title-bar { padding: 15px 20px; border-bottom: 1px solid #e4e6eb; background: #fcfcfc; }
+        .post-title { font-size: 18px; font-weight: bold; color: #333; font-family: "Microsoft YaHei", sans-serif; }
+
+        /* 楼层通用结构 */
+        .floor-row { display: flex; border-bottom: 1px solid #e4e6eb; }
+        
+        /* 左侧用户信息栏 */
+        .user-info-col { width: 130px; background: #fafafa; padding: 15px 10px; text-align: center; border-right: 1px solid #e4e6eb; flex-shrink: 0; }
+        .avatar-mock { width: 60px; height: 60px; background: #e4e6eb; border-radius: 4px; margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #999; user-select: none; }
+        .username-link { color: #2d8cf0; text-decoration: none; font-size: 12px; font-weight: bold; word-break: break-all; display: block; }
+        .username-link:hover { text-decoration: underline; }
+        
+        /* 右侧内容栏 */
+        .content-col { flex: 1; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 160px; }
+        .post-text { font-size: 14px; color: #333; line-height: 1.8; word-break: break-all; }
+        
+        /* 楼层底部小尾巴与互动 */
+        .floor-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; font-size: 12px; color: #999; }
+        .client-tail { color: #666; }
+        .floor-actions span { margin-left: 15px; cursor: pointer; }
+        .floor-actions span:hover { color: #2d8cf0; }
+
+        /* ================= 楼中楼回复区域 ================= */
+        .lzl-container { background: #f7f8fa; border: 1px solid #f0f1f2; padding: 10px 15px; margin-top: 15px; border-radius: 2px; }
+        .lzl-item { padding: 8px 0; border-bottom: 1px dotted #e4e6eb; font-size: 13px; line-height: 1.5; }
+        .lzl-item:last-child { border-bottom: none; }
+        
+        .lzl-username { color: #2d8cf0; text-decoration: none; font-weight: bold; }
+        .lzl-username:hover { text-decoration: underline; }
+        .lzl-text { color: #333; }
+        .lzl-reply-target { color: #666; font-style: normal; margin: 0 4px; }
+        
+        .lzl-footer { text-align: right; font-size: 12px; color: #999; margin-top: 4px; }
+        .lzl-btn-reply { color: #2d8cf0; cursor: pointer; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="tb-header">
+        <a href="javascript:void(0);">网页</a>
+        <a href="javascript:void(0);">资讯</a>
+        <a href="javascript:void(0);">视频</a>
+        <a href="javascript:void(0);">图片</a>
+        <a href="javascript:void(0);">知道</a>
+        <a href="javascript:void(0);" style="font-weight: bold;">粘吧</a>
+    </div>
+
+    <div class="search-section">
+        <a href="javascript:void(0);" class="logo-box">千度粘吧</a>
+        <div class="search-form-mock">
+            <input type="text" class="search-input-mock" value="海镜花">
+            <button class="search-btn-mock">粘吧搜索</button>
+        </div>
+    </div>
+
+    <div class="post-container">
+        
+        <div class="post-title-bar">
+            <h1 class="post-title">求资源！想起来小时候看过的一个动画片</h1>
+        </div>
+
+        <div class="floor-row">
+            <div class="user-info-col">
+                <div class="avatar-mock">👤</div>
+                <a href="javascript:void(0);" class="username-link">看星星的人</a>
+            </div>
+            <div class="content-col">
+                <div class="post-text">
+                    刚才刷到什么“童年回忆”之类的帖子，突然想起来一个动画片。好像叫《海镜花》，还是什么别的名字，记不太清了。就是一个女孩有一面镜子，可以穿进去。镜子里有另一个自己。我记不太清结局了，好像……外面的女孩不见了？还是里面的女孩出来了？反正最后只剩下一个人。小时候看的时候没觉得有什么，现在想想那个结局有点可怕。有人记得吗？想不起来叫什么了，搜也搜不到。我记得还有真人版。。。
+                </div>
+                <div class="floor-footer">
+                    <div>
+                        <span class="client-tail">来自Android客户端</span>
+                    </div>
+                    <div class="floor-actions">
+                        <span>1楼</span>
+                        <span>2026-06-15 11:24</span>
+                        <span>回复</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floor-row">
+            <div class="user-info-col">
+                <div class="avatar-mock" style="background:#e8f4ff; color:#2d8cf0;">🎈</div>
+                <a href="javascript:void(0);" class="username-link">泡泡2308</a>
+            </div>
+            <div class="content-col">
+                <div>
+                    <div class="post-text">
+                        存档类的网页可能会有资源，你找一下试试看？
+                    </div>
+
+                    <div class="lzl-container">
+                        
+                        <div class="lzl-item">
+                            <a href="xinglover.html" class="lzl-username">看星星的人</a>: 
+                            <span class="lzl-text">找到网站了，直接搜就行吗</span>
+                            <div class="lzl-footer">
+                                <span>2026-06-15 11:42</span>
+                                <span class="lzl-btn-reply">回复</span>
+                            </div>
+                        </div>
+                        
+                        <div class="lzl-item">
+                            <a href="javascript:void(0);" class="lzl-username">泡泡2308</a>
+                            <span class="lzl-reply-target">回复</span>
+                            <a href="xinglover.html" class="lzl-username">看星星的人</a>: 
+                            <span class="lzl-text">是的，甚至能找到真人版资源，就是只剩片段了</span>
+                            <div class="lzl-footer">
+                                <span>2026-06-15 11:45</span>
+                                <span class="lzl-btn-reply">回复</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                
+                <div class="floor-footer">
+                    <div>
+                        <span class="client-tail">来自iPhone客户端</span>
+                    </div>
+                    <div class="floor-actions">
+                        <span>2楼</span>
+                        <span>2026-06-15 11:30</span>
+                        <span>收起回复(2)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

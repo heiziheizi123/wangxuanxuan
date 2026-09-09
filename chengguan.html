@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新城关小学吧-千度粘吧_像狐网一样为自由而生</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "宋体", Arial, Helvetica, sans-serif; background-color: #dee4ed; color: #333; font-size: 12px; }
+        a { color: #2d64b5; text-decoration: none; }
+        a:hover { text-decoration: underline; color: #e44444; }
+
+        /* 贴吧经典顶栏 */
+        .tieba-top-nav { background: #fff; border-bottom: 1px solid #d1d7e2; height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+        .top-left-logo { font-size: 14px; font-weight: bold; color: #2d8cf0; }
+        
+        /* 搜索框与登录组合区域 */
+        .top-right-zone { display: flex; align-items: center; gap: 15px; }
+        .search-box-container { display: flex; align-items: center; background: #fff; border: 1px solid #ccc; padding: 2px; border-radius: 2px; }
+        .search-input { border: none; outline: none; padding: 4px 8px; width: 180px; font-size: 12px; }
+        .search-btn { background: #38f; color: #fff; border: none; padding: 4px 12px; cursor: pointer; font-size: 12px; border-radius: 2px; }
+        .search-btn:hover { background: #2972cc; }
+        
+        /* 圆形登录头像 */
+        .login-avatar-btn { width: 28px; height: 28px; border-radius: 50%; background: #e1e6f0; border: 1px solid #b0b9c8; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; color: #666; font-size: 14px; transition: all 0.2s; }
+        .login-avatar-btn:hover { border-color: #2d8cf0; background: #fff; }
+
+        /* 吧Banner与头部 - 已强制锁死 1000px 盒模型宽度 */
+        .bar-main-header { 
+            width: 1000px; 
+            height: 140px;
+            margin: 10px auto 0 auto; 
+            background: #2d2d2d url('https://picsum.photos/1000/150?blur=5') no-repeat center; 
+            background-size: cover; 
+            border: 1px solid #b0b9c8; 
+            border-bottom: none; 
+            position: relative; 
+            padding: 20px; 
+            display: flex; 
+            align-items: flex-end; 
+            color: #fff; 
+            box-sizing: border-box;
+        }
+        .bar-header-mask { position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); z-index: 1; }
+        .bar-header-content { position: relative; z-index: 2; display: flex; align-items: center; width: 100%; }
+        .bar-avatar-box { width: 90px; height: 90px; background: #fff; padding: 4px; border: 1px solid #000; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .bar-avatar-inner { width: 100%; height: 100%; background: #4ba3e3; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; text-align: center; line-height: 1.4; color: #fff; }
+        .bar-text-details { margin-left: 20px; flex: 1; }
+        .bar-title-row { display: flex; align-items: center; gap: 10px; }
+        .bar-title-name { font-size: 22px; font-family: "微软雅黑", sans-serif; font-weight: bold; }
+        .follow-btn { background: #ff4d4f; border: none; color: #fff; padding: 3px 10px; font-size: 12px; border-radius: 3px; cursor: pointer; }
+        .bar-slogan { margin-top: 8px; color: #ccc; font-size: 12px; }
+
+        /* 主体布局 - 保持 1000px 绝对等宽 */
+        .main-container { width: 1000px; margin: 0 auto 30px auto; display: flex; background: #fff; border: 1px solid #b0b9c8; box-sizing: border-box; }
+        
+        /* 左栏：帖子列表 */
+        .left-content-panel { width: 738px; border-right: 1px solid #e4e6eb; }
+        .tab-menu-bar { background: #f2f2f2; border-bottom: 1px solid #e4e6eb; display: flex; height: 38px; align-items: center; padding-left: 10px; }
+        .tab-menu-item { padding: 0 20px; height: 38px; line-height: 38px; color: #333; font-weight: bold; border-right: 1px solid #e4e6eb; background: #f2f2f2; }
+        .tab-menu-item.active { background: #fff; border-bottom: 1px solid #fff; margin-bottom: -1px; position: relative; height: 39px; }
+
+        /* 广告位 1 容器 */
+        .mid-ad-banner { padding: 10px 0px; margin-bottom: 20px; border-bottom: 1px solid #e4e6eb; background: #fff; }
+
+        /* 帖子列表单项 */
+        .post-list-wrapper { background: #fff; }
+        .post-row-item { display: flex; align-items: center; padding: 15px 15px; border-bottom: 1px solid #f2f4f7; }
+        .post-row-item:hover { background: #f7f9fc; }
+        .reply-num-box { width: 45px; text-align: center; background: #f2f4f7; color: #666; padding: 2px 0; border-radius: 2px; font-size: 11px; margin-right: 15px; border: 1px solid #e1e4e9; }
+        .post-main-info { flex: 1; padding-right: 20px; }
+        .post-title-line { font-size: 14px; margin-bottom: 4px; font-weight: 500; }
+        .post-preview-text { color: #666; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 480px; }
+        .post-author-info { width: 120px; text-align: right; color: #888; font-size: 11px; }
+
+        .label-badge { font-size: 11px; padding: 1px 3px; border-radius: 2px; margin-right: 5px; font-weight: normal; }
+        .label-top { background: #2d8cf0; color: #fff; }
+        .label-essence { background: #ff4d4f; color: #fff; }
+
+        /* 右栏：吧务与广告 */
+        .right-sidebar { width: 260px; background: #fcfcfd; padding: 15px; box-sizing: border-box; }
+        .sidebar-section { border: 1px solid #e4e6eb; background: #fff; padding: 12px; margin-bottom: 15px; }
+        .sidebar-title { font-size: 13px; font-weight: bold; border-bottom: 1px solid #e4e6eb; padding-bottom: 6px; margin-bottom: 10px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="tieba-top-nav">
+        <div class="top-left-logo">Baidu 粘吧经典版</div>
+        <div class="top-right-zone">
+            <div class="search-box-container">
+                <input type="text" id="tiebaSearch" class="search-input" placeholder="输入关键词搜吧内贴..." onkeydown="if(event.keyCode==13) executeSearch()">
+                <button type="button" class="search-btn" onclick="executeSearch()">吧内搜索</button>
+            </div>
+            <a href="login.html" class="login-avatar-btn" title="点击登录">👤</a>
+        </div>
+    </div>
+
+    <!-- 大Banner已经限制成和下方主容器一模一样的 1000px 宽度 -->
+    <div class="bar-main-header">
+        <div class="bar-header-mask"></div>
+        <div class="bar-header-content">
+            <a href="chengguan.html" class="bar-avatar-box">
+                <div class="bar-avatar-inner">城关<br>小学</div>
+            </a>
+            <div class="bar-text-details">
+                <div class="bar-title-row">
+                    <span class="bar-title-name"><a href="chengguan.html" style="color:#fff; text-decoration:none;">新城关小学吧</a></span>
+                    <button class="follow-btn">＋关注</button>
+                </div>
+                <div class="bar-slogan">目录：个人粘吧 | 同学们，欢迎回家。</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="left-content-panel">
+            <div class="tab-menu-bar">
+                <div class="tab-menu-item active">看帖</div>
+                <div class="tab-menu-item">图片</div>
+                <div class="tab-menu-item">精品</div>
+            </div>
+
+            <!-- 广告位 1：强行撑开高度与间距 -->
+            <div class="mid-ad-banner">
+                <a href="#" onclick="alert('游戏提示：这是一个普通的同城宠物广告，似乎与主线失踪案没有直接关联。')">
+                    <img src="image_4.png" alt="广告" style="width: 100%; height: auto; object-fit: cover; display: block; border: 1px solid #edd5be; border-radius: 2px;">
+                </a>
+            </div>
+
+            <div class="post-list-wrapper" id="postListContainer">
+                <!-- 【13】 -->
+                <div class="post-row-item" data-keywords="13 有人认识这个被墨水挡住的女孩吗 重演./ 王瑾岚 王萱萱 青萱解语">
+                    <div class="reply-num-box">13</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><span class="label-badge label-essence">精</span><a href="index.html">【13】有人认识这个被墨水挡住的女孩吗</a></div>
+                        <div class="post-preview-text">吧里有20届的同学吗，有人认识这个女生吗，问了身边几个同学大家都说忘记她是谁了。。。</div>
+                    </div>
+                    <div class="post-author-info"><div>重演./</div></div>
+                </div>
+
+                <!-- 【12】 -->
+                <div class="post-row-item" data-keywords="12 8 怎么消失了 泡泡2308 昨天还看见 没了">
+                    <div class="reply-num-box">23</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><span class="label-badge label-top">置顶</span><a href="page1.html">【12】【8】怎么消失了？</a></div>
+                        <div class="post-preview-text">泡泡2308: 昨天还看见【8】还在，怎么今天早上就没了？</div>
+                    </div>
+                    <div class="post-author-info"><div>泡泡2308</div></div>
+                </div>
+
+                <!-- 【11】 -->
+                <div class="post-row-item" data-keywords="11 我城关王打遍天下无敌手 有不服的吗 城关唯一的王 菜场 锁住车门">
+                    <div class="reply-num-box">82</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="page2.html">【11】我城关王打遍天下无敌手，有不服的吗</a></div>
+                        <div class="post-preview-text">城关唯一的王：我打赌全城关小学没有一个是我的对手，哈哈，菜场周围的小心点锁住车门别遇见我！</div>
+                    </div>
+                    <div class="post-author-info"><div>城关唯一的王</div></div>
+                </div>
+
+                <!-- 【10】 -->
+                <div class="post-row-item" data-keywords="10 不想长痘痘 这个特训学校的广告好烦啊！">
+                    <div class="reply-num-box">41</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="texun-in.html">【10】这个特训学校的广告好烦啊！</a></div>
+                        <div class="post-preview-text">不想长痘痘：他妈的这种害人害己的东西不要再给我推了好吗。</div>
+                    </div>
+                    <div class="post-author-info"><div>不想长痘痘</div></div>
+                </div>
+
+                <!-- 【9】 -->
+                <div class="post-row-item" data-keywords="9 五三永远的神 08届六年级三班的来报个到 班主任姓王 怀念">
+                    <div class="reply-num-box">19</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="page3.html">【9】08届六年级三班的来报个到</a></div>
+                        <div class="post-preview-text">五三永远的神：看到这个吧突然好怀念。班主任姓王，有没有同班的？</div>
+                    </div>
+                    <div class="post-author-info"><div>五三永远的神</div></div>
+                </div>
+
+                <!-- 【7】 -->
+                <div class="post-row-item" data-keywords="7 辣条批发商 以前小卖部五毛钱的辣条 大刀肉 超市">
+                    <div class="reply-num-box">55</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="page4.html">【7】以前小卖部五毛钱的辣条</a></div>
+                        <div class="post-preview-text">辣条批发商：叫什么大刀肉还是啥来着，现在超市卖的那种完全不是一个味。</div>
+                    </div>
+                    <div class="post-author-info"><div>辣条批发商</div></div>
+                </div>
+
+                <!-- 【6】 -->
+                <div class="post-row-item" data-keywords="6 操场晒太阳 城关村342号一居室出租 出租 800一个月 137276">
+                    <div class="reply-num-box">3</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="page5.html">【6】一个学校的恐怖传闻</a></div>
+                        <div class="post-preview-text">操场晒太阳：传说传说学校体育馆那个堆杂物的舞蹈室，有一面镜子，我后面那几届有个小女孩，进去就出不来了</div>
+                    </div>
+                    <div class="post-author-info"><div>操场晒太阳</div></div>
+                </div>
+
+                <!-- 【5】 -->
+                <div class="post-row-item" data-keywords="5 匿名用户9527 突然想起来以前周一都要穿校服 红色那套 扣分">
+                    <div class="reply-num-box">28</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="#">【5】突然想起来以前周一都要穿校服</a></div>
+                        <div class="post-preview-text">匿名用户9527：红色那套，特别丑，但不穿要被扣分。</div>
+                    </div>
+                    <div class="post-author-info"><div>匿名用户9527</div></div>
+                </div>
+
+                <!-- 【4】 -->
+                <div class="post-row-item" data-keywords="4 铁皮蛤蟆 有谁玩过那个塑料弹簧圈吗 彩虹弹簧 下课">
+                    <div class="reply-num-box">14</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="#">【4】有谁玩过那个塑料弹簧圈吗</a></div>
+                        <div class="post-preview-text">铁皮蛤蟆：就是可以一步一步往下翻的那个彩虹弹簧，下课全班都在玩。</div>
+                    </div>
+                    <div class="post-author-info"><div>铁皮蛤蟆</div></div>
+                </div>
+
+                <!-- 【3】 -->
+                <div class="post-row-item" data-keywords="3 数学考过65 学校那棵大槐树还在吗 乘凉 爬树 教导主任">
+                    <div class="reply-num-box">65</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="page6.html">【3】学校那棵大槐树还在吗</a></div>
+                        <div class="post-preview-text">数学考过65：以前夏天都在下面乘凉，男生爬树被教导主任抓。</div>
+                    </div>
+                    <div class="post-author-info"><div>数学考过65</div></div>
+                </div>
+
+                <!-- 【2】 -->
+                <div class="post-row-item" data-keywords="2 城关小学吧迁移通知 泡泡2308 吧务 迁移的通知">
+                    <div class="reply-num-box">2</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><span class="label-badge label-top">置顶</span><a href="page7.html">【2】城关小学吧迁移通知</a></div>
+                        <div class="post-preview-text">【吧务】关于城关小学吧迁移的通知页。</div>
+                    </div>
+                    <div class="post-author-info"><div>泡泡2308</div></div>
+                </div>
+
+                <!-- 【1】 -->
+                <div class="post-row-item" data-keywords="1 吧务 新城关小学吧吧规 吧规 删帖">
+                    <div class="reply-num-box">0</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><span class="label-badge label-top">置顶</span><a href="#">【1】【吧务】新城关小学吧吧规</a></div>
+                        <div class="post-preview-text">欢迎来到本吧，发帖前请务必阅读本吧吧规约束。</div>
+                    </div>
+                    <div class="post-author-info"><div>吧务团队</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">本吧信息</div>
+                <p style="line-height: 1.8; color:#666;">
+                    吧主：文科°C<br>
+                    核心会员：泡泡2308<br>
+                    目录：软件及互联网产品
+                </p>
+            </div>
+            
+            <!-- 侧边栏广告位：固定 240px 高度 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">吧友推荐</div>
+                <a href="login.html" style="display: block; text-decoration: none;">
+                    <img src="image_3.png" alt="广告" style="width: 100%; height: 240px; object-fit: cover; display: block; border: 1px dashed #9bc1ff; border-radius: 4px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function executeSearch() {
+            var val = document.getElementById('tiebaSearch').value.trim();
+            if(val !== '') {
+                window.location.href = "search.html?kw=" + encodeURIComponent(val);
+            }
+        }
+        
+        document.getElementById('tiebaSearch').addEventListener('input', function(e){
+            var filter = e.target.value.toLowerCase();
+            var rows = document.querySelectorAll('.post-row-item');
+            rows.forEach(function(row){
+                var keywords = row.getAttribute('data-keywords').toLowerCase();
+                if(keywords.indexOf(filter) > -1) { row.style.display = ''; } else { row.style.display = 'none'; }
+            });
+        });
+    </script>
+</body>
+</html>

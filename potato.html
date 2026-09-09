@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千度粘吧-提示</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; background-color: #fff; color: #333; }
+        
+        /* 顶部蓝色导航栏 */
+        .tb-header { background: #2d8cf0; height: 40px; display: flex; align-items: center; padding: 0 50px; font-size: 12px; }
+        .tb-header span { color: #fff; margin-right: 15px; opacity: 0.9; cursor: default; }
+
+        /* 搜索框区域 */
+        .search-section { width: 100%; max-width: 1000px; margin: 25px auto 0 auto; padding: 0 20px; display: flex; align-items: center; }
+        .logo-box { font-size: 26px; font-weight: bold; color: #2d8cf0; margin-right: 20px; text-decoration: none; letter-spacing: -2px; cursor: default; }
+        .search-form-mock { display: flex; flex: 1; max-width: 520px; }
+        .search-input-mock { flex: 1; height: 36px; padding: 0 10px; border: 1px solid #ccc; font-size: 14px; outline: none; background-color: #f5f5f5; color: #aaa; }
+        .search-btn-mock { background: #cccccc; color: #fff; border: none; width: 90px; height: 36px; font-size: 14px; font-weight: bold; cursor: default; }
+
+        /* 核心分隔线 */
+        .nav-line { width: 100%; max-width: 1000px; margin: 20px auto; border-bottom: 1px solid #e4e6eb; }
+
+        /* 错误提示主体盒 */
+        .error-container { width: 100%; max-width: 1000px; margin: 90px auto; padding: 0 20px; display: flex; justify-content: center; }
+        .error-content { display: flex; align-items: flex-start; max-width: 550px; }
+        
+        /* 粘吧注销灰暗表情 */
+        .error-icon { font-size: 54px; line-height: 1; margin-right: 24px; margin-top: -4px; user-select: none; opacity: 0.4; filter: grayscale(100%); }
+        
+        /* 提示文字 */
+        .error-text-box { flex: 1; }
+        .error-title { font-size: 20px; font-weight: bold; color: #222; margin-bottom: 12px; font-family: "Microsoft YaHei", sans-serif; }
+        .error-reason { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 25px; }
+        
+        /* 无法交互的灰化按钮 */
+        .btn-group { display: flex; gap: 10px; }
+        .tb-btn { display: inline-block; padding: 0 16px; height: 32px; line-height: 31px; font-size: 13px; border-radius: 2px; text-decoration: none; text-align: center; cursor: default; }
+        .btn-disabled { background: #f5f5f5; color: #999; border: 1px solid #e4e6eb; }
+    </style>
+</head>
+<body>
+
+    <div class="tb-header">
+        <span>网页</span>
+        <span>资讯</span>
+        <span>视频</span>
+        <span>图片</span>
+        <span>知道</span>
+        <span style="font-weight: bold; opacity: 1;">粘吧</span>
+    </div>
+
+    <div class="search-section">
+        <div class="logo-box">千度粘吧</div>
+        <div class="search-form-mock">
+            <input type="text" class="search-input-mock" value="" disabled placeholder="用户状态异常，暂不支持检索...">
+            <button class="search-btn-mock">全吧搜索</button>
+        </div>
+    </div>
+
+    <div class="nav-line"></div>
+
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-icon">😶</div>
+            <div class="error-text-box">
+                <h1 class="error-title">提示：该用户账号已注销。</h1>
+                <p class="error-reason">您访问的用户主页已不存在。由于该账号所有者已自愿申请注销账号（旧实名验证仅保留“王＊岚”），根据《千度粘吧用户服务协议》，该用户的个人资料、发帖历史以及所有互动痕迹已进行隐藏或匿名化抹除。系统无法继续加载该服务。</p>
+                
+                <div class="btn-group">
+                    <span class="tb-btn btn-disabled">主页已失效</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

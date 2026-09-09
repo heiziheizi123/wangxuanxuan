@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家长评价 - 阳光青少年成长学校</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    background: #e8edf3;
+    color: #333;
+    font-size: 14px;
+}
+
+/* =========================
+   顶部导航
+========================= */
+
+.top-header {
+    height: 74px;
+    background: linear-gradient(to bottom, #4d88bd 0%, #2f6fa8 48%, #255e91 100%);
+    border-bottom: 1px solid #1e4f7d;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.35);
+}
+
+.header-inner {
+    width: 1000px;
+    height: 74px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    width: 235px;
+    color: #fff;
+    font-family: "宋体", SimSun, serif;
+    font-size: 23px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #17466f;
+}
+
+.site-logo small {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-top: 4px;
+    color: #dceafa;
+}
+
+.main-nav {
+    height: 74px;
+    display: flex;
+    align-items: stretch;
+}
+
+.main-nav a {
+    display: flex;
+    align-items: center;
+    padding: 0 21px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    border-left: 1px solid rgba(255,255,255,0.13);
+    border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background: linear-gradient(to bottom, #6da3d2, #3a78ae);
+}
+
+/* =========================
+   页面
+========================= */
+
+.page {
+    width: 1000px;
+    margin: 18px auto 35px;
+}
+
+.breadcrumb {
+    height: 36px;
+    line-height: 36px;
+    padding-left: 12px;
+    color: #777;
+    font-size: 12px;
+    background: #f7f8fa;
+    border: 1px solid #d1d8df;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.breadcrumb a {
+    color: #4d7fae;
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    color: #aaa;
+    margin: 0 7px;
+}
+
+/* =========================
+   页面标题
+========================= */
+
+.page-title {
+    margin-top: 12px;
+    background: #fff;
+    border: 1px solid #c8d0d8;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.16);
+}
+
+.title-bar {
+    height: 52px;
+    line-height: 52px;
+    padding: 0 18px;
+    color: #fff;
+    font-size: 19px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #558fc1 0%, #3675aa 50%, #2b6699 100%);
+    border-bottom: 1px solid #24567f;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.title-description {
+    padding: 11px 18px;
+    background: #f4f7fa;
+    border-bottom: 1px solid #d8dfe5;
+    color: #777;
+    font-size: 12px;
+}
+
+/* =========================
+   评论统计
+========================= */
+
+.comment-summary {
+    margin-top: 13px;
+    background: #fff;
+    border: 1px solid #cbd3db;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+}
+
+.summary-title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #6299c6, #3978ad);
+    border-bottom: 1px solid #2c628f;
+}
+
+.summary-content {
+    display: flex;
+    padding: 15px 18px;
+}
+
+.summary-number {
+    width: 160px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+.summary-number strong {
+    display: block;
+    color: #e58b43;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+}
+
+.summary-number span {
+    color: #888;
+    font-size: 12px;
+}
+
+.summary-text {
+    padding-left: 20px;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* =========================
+   评论列表
+========================= */
+
+.comment-list {
+    margin-top: 13px;
+}
+
+.comment {
+    margin-bottom: 12px;
+    background: #fff;
+    border: 1px solid #cbd3db;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+}
+
+.comment-header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 13px;
+    background: #f1f4f7;
+    border-bottom: 1px solid #d8dfe5;
+}
+
+.comment-user {
+    color: #477ca8;
+    font-weight: bold;
+}
+
+.comment-time {
+    float: right;
+    color: #999;
+    font-size: 11px;
+}
+
+.comment-body {
+    padding: 15px 18px;
+    line-height: 1.9;
+    color: #444;
+}
+
+.comment-body p {
+    margin: 0;
+}
+
+/* 机器人标签 */
+
+.robot-label {
+    display: inline-block;
+    margin-left: 7px;
+    padding: 1px 5px;
+    color: #fff;
+    background: #aaa;
+    border: 1px solid #888;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+/* 家长标签 */
+
+.parent-label {
+    display: inline-block;
+    margin-left: 7px;
+    padding: 1px 5px;
+    color: #fff;
+    background: #5c9c63;
+    border: 1px solid #47844e;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+/* 负面评论 */
+
+.warning-comment {
+    border-color: #d7b3a6;
+}
+
+.warning-comment .comment-header {
+    background: #fff5f0;
+    border-bottom-color: #ead3ca;
+}
+
+.warning-comment .comment-user {
+    color: #b34e32;
+}
+
+.warning-box {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: #fff8f5;
+    border: 1px solid #e2b9aa;
+    color: #8d4b3a;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.news-link {
+    color: #005bbb;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.news-link:hover {
+    color: #e36f1e;
+}
+
+/* =========================
+   分页
+========================= */
+
+.pagination {
+    padding: 18px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #cbd3db;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: 1px solid #c7d0d8;
+    background: #f5f7f9;
+    color: #527fa6;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.pagination .current {
+    background: #4b83b5;
+    border-color: #326b9b;
+    color: #fff;
+}
+
+/* =========================
+   底部
+========================= */
+
+.footer {
+    margin-top: 18px;
+    padding: 20px 0;
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.8;
+    border-top: 1px solid #cfd6dd;
+}
+
+.footer a {
+    color: #6689a5;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1020px) {
+    .header-inner,
+    .page {
+        width: 94%;
+    }
+
+    .main-nav a {
+        padding: 0 12px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .top-header,
+    .header-inner {
+        height: auto;
+    }
+
+    .header-inner {
+        display: block;
+    }
+
+    .site-logo {
+        width: auto;
+        padding: 12px;
+    }
+
+    .main-nav {
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .main-nav a {
+        height: 38px;
+    }
+
+    .summary-content {
+        display: block;
+    }
+
+    .summary-number {
+        width: 100%;
+        padding-bottom: 12px;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .summary-text {
+        padding: 12px 0 0;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 顶部导航 -->
+
+<div class="top-header">
+    <div class="header-inner">
+
+```
+    <div class="site-logo">
+        阳光青少年成长学校
+        <small>YANGGUANG YOUTH GROWTH SCHOOL</small>
+    </div>
+
+    <div class="main-nav">
+        <a href="texunqazwsx.html">学校首页</a>
+        <a href="#">学校介绍</a>
+        <a href="#">课程设置</a>
+        <a href="#">校园环境</a>
+        <a href="wangjinlan.html">学员档案</a>
+        <a href="#" class="active">家长评价</a>
+        <a href="texun-login.html">家长中心</a>
+    </div>
+
+</div>
+```
+
+</div>
+
+<div class="page">
+
+```
+<!-- 面包屑 -->
+<div class="breadcrumb">
+    <a href="texunqazwsx.html">首页</a>
+    <span>></span>
+    家长评价
+    <span>></span>
+    学员成长反馈
+</div>
+
+
+<!-- 页面标题 -->
+<div class="page-title">
+
+    <div class="title-bar">
+        家长评价与学员成长反馈
+    </div>
+
+    <div class="title-description">
+        欢迎家长对学校的教育管理工作提出意见和建议，以下内容为网站用户提交的公开留言。
+    </div>
+
+</div>
+
+
+<!-- 评论统计 -->
+<div class="comment-summary">
+
+    <div class="summary-title">
+        家长留言
+    </div>
+
+    <div class="summary-content">
+
+        <div class="summary-number">
+            <strong>4.8</strong>
+            <span>综合评价</span>
+        </div>
+
+        <div class="summary-text">
+            学校一直重视家长反馈，并持续根据家长意见改善学员管理和教育服务。
+            <br>
+            当前页面展示部分家长公开留言及用户评论。
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 评论列表 -->
+<div class="comment-list">
+
+
+    <!-- 机器人评论 1 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                阳光明媚
+                <span class="robot-label">自动推荐</span>
+            </span>
+
+            <span class="comment-time">
+                2026-05-08
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                非常好的学校！老师认真负责，管理严格，孩子送过来以后变化特别大！
+                真的是家长放心、孩子安心，强烈推荐大家选择！
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 机器人评论 2 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                幸福一家人
+                <span class="robot-label">自动推荐</span>
+            </span>
+
+            <span class="comment-time">
+                2026-05-11
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                学校环境非常好，老师们都很有耐心，对孩子帮助非常大！
+                感谢学校培养，感谢老师辛苦付出，孩子现在懂事多了！
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 机器人评论 3 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                家长之家
+                <span class="robot-label">自动推荐</span>
+            </span>
+
+            <span class="comment-time">
+                2026-05-19
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                这是一个值得信赖的专业机构，课程安排合理，管理规范，
+                对孩子的成长起到了很大的帮助，老师们辛苦了！
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 真实家长评论 1 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                王女士
+                <span class="parent-label">家长</span>
+            </span>
+
+            <span class="comment-time">
+                2026-04-26
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                我家孩子之前在家里基本不愿意和我们沟通，后来学校老师跟我们联系了几次，
+                让我们也调整和孩子说话的方式。六个月下来，我觉得最大的变化不是成绩，
+                而是孩子愿意重新坐下来跟我们商量事情了。
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 真实家长评论 2 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                李先生
+                <span class="parent-label">家长</span>
+            </span>
+
+            <span class="comment-time">
+                2026-04-13
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                孩子以前经常逃课，早上怎么叫都不起床，家里因为这个事情吵了很多次。
+                在学校这段时间至少把作息调整过来了，现在愿意重新考虑回学校读书。
+                对我们家来说，这个变化已经很不容易。
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 真实家长评论 3 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                陈女士
+                <span class="parent-label">家长</span>
+            </span>
+
+            <span class="comment-time">
+                2026-03-29
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                老师和我们沟通比较多，会告诉我们孩子每天的情况。
+                我觉得这一点比较重要，因为以前孩子在学校和在家完全是两个状态。
+                现在至少能够正常交流，也开始愿意计划之后的学习了。
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 质疑评论 -->
+    <div class="comment warning-comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                不要沉默
+            </span>
+
+            <span class="comment-time">
+                2026-03-21
+            </span>
+        </div>
+
+        <div class="comment-body">
+
+            <p>
+                我觉得大家不要只看这些夸学校的评论。类似的封闭式特训机构过去一直存在争议，
+                家长在选择之前一定要仔细核实机构资质、管理方式以及孩子的人身安全问题。
+                网上也出现过关于特训机构暴力、虐待以及其他严重侵害行为的报道，
+                不能因为宣传页面写得很好看就完全相信。
+            </p>
+
+            <div class="warning-box">
+                ⚠ 提醒：以下链接为公开媒体关于特训机构相关争议的报道，
+                并非针对本网站所展示机构的事实认定。家长选择机构前请自行核实相关信息。
+
+                <br><br>
+
+                <a class="news-link"
+                   href="news.html">
+                    【新闻调查】特训机构相关争议报道及家长安全提醒 &gt;&gt; 点击查看
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 机器人评论 4 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                成长路上
+                <span class="robot-label">自动推荐</span>
+            </span>
+
+            <span class="comment-time">
+                2026-03-16
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                非常感谢学校和老师！孩子改变很大，家长非常满意！
+                选择阳光学校是我们做过的正确决定！
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- 机器人评论 5 -->
+    <div class="comment">
+
+        <div class="comment-header">
+            <span class="comment-user">
+                为了孩子
+                <span class="robot-label">自动推荐</span>
+            </span>
+
+            <span class="comment-time">
+                2026-02-28
+            </span>
+        </div>
+
+        <div class="comment-body">
+            <p>
+                专业、负责、有爱心！老师对孩子非常有耐心，
+                学校管理也非常严格，孩子进步非常明显，值得信赖！
+            </p>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- 分页 -->
+<div class="pagination">
+
+    <span class="current">1</span>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">下一页</a>
+
+</div>
+
+
+<!-- 底部 -->
+<div class="footer">
+
+    阳光青少年成长学校 版权所有　|　家长评价系统<br>
+
+    本页面留言内容由网站用户自行提交，学校仅提供信息展示服务<br>
+
+    <a href="texunqazwsx.html">返回首页</a>
+   　|　
+    <a href="wangjinlan.html">查看王瑾岚成长档案</a>
+   　|　
+    <a href="texun-login.html">家长中心</a>
+
+</div>
+```
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贴吧搜索结果 - 百度贴吧</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; background-color: #dee4ed; color: #333; padding: 20px; }
+        .search-container { max-width: 600px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        
+        /* 搜索框区域 */
+        .search-form { display: flex; margin-bottom: 20px; }
+        .search-input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; outline: none; font-size: 14px; }
+        .search-btn { background: #2d8cf0; color: white; border: none; padding: 10px 20px; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 14px; font-weight: bold; }
+        .search-btn:hover { background: #1871d6; }
+        
+        /* 结果列表区 */
+        .result-list { list-style: none; }
+        .result-item { padding: 15px 10px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
+        .result-item:last-child { border-bottom: none; }
+        .result-item.hidden { display: none; }
+        
+        /* 真实有效的链接样式 */
+        .result-link { color: #2d8cf0; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .result-link:hover { text-decoration: underline; }
+        
+        /* 纯装饰干扰项样式（可点击，无跳转，无灰色后缀） */
+        .result-link-mock { color: #2d8cf0; text-decoration: none; font-weight: bold; font-size: 14px; cursor: pointer; line-height: 1.4; display: inline-block; }
+        .result-link-mock:hover { text-decoration: underline; }
+        
+        /* 空结果提示 */
+        .no-results { text-align: center; padding: 30px; color: #999; font-size: 14px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <form action="" method="GET" class="search-form" id="searchForm">
+            <input type="text" name="kw" id="searchInput" class="search-input" placeholder="请输入关键词进行精确搜索..." autocomplete="off">
+            <button type="submit" class="search-btn">贴吧搜索</button>
+        </form>
+
+        <div id="noResultsMessage" class="no-results">🔍 抱歉，未找到与该关键词完全一致的精确结果。</div>
+
+        <ul class="result-list" id="resultList">
+            
+            <li class="result-item hidden" data-type="real" data-keyword="《海镜花》 海镜花">
+                <a href="oldpage6.html" class="result-link">[997]重看《海镜花》</a>
+            </li>
+            <li class="result-item hidden" data-type="real" data-keyword="《海镜花》 海镜花">
+                <a href="flowerbar.html" class="result-link">动画片海镜花吧</a>
+            </li>
+
+            <li class="result-item hidden" data-type="real" data-keyword="土豆汤汤">
+                <a href="potato.html" class="result-link">土豆汤汤的个人主页 (用户已注销的个人主页)</a>
+            </li>
+            <li class="result-item hidden" data-type="real" data-keyword="星星493">
+                <a href="xingxing.html" class="result-link">星星493 (星星的个人主页)</a>
+            </li>
+            <li class="result-item hidden" data-type="real" data-keyword="伤心的太极端了吧">
+                <a href="shangxin.html" class="result-link">伤心的太极端了吧 (伤心的太极端了吧的个人主页)</a>
+            </li>
+            <li class="result-item hidden" data-type="real" data-keyword="看星星的人">
+                <a href="xinglover.html" class="result-link">看星星的人 (看星星的人的个人主页)</a>
+            </li>
+<li class="result-item hidden" data-type="real" data-keyword="苗苗 童星苗苗">
+                <a href="miaomiao.html" class="result-link">关于童星苗苗</a>
+            </li>
+<li class="result-item hidden" data-type="real" data-keyword="苗苗 童星苗苗">
+                <a href="aboutmiaodad.html" class="result-link">有关苗苗爸爸的传言</a>
+            </li>
+
+<li class="result-item hidden" data-type="real" data-keyword="Atbash">
+                <a href="password.html" class="result-link">来写一个Atbash密码科普的帖子</a>
+            </li>
+<li class="result-item hidden" data-type="real" data-keyword="Atbash">
+                <a href="password1.html" class="result-link">记一种加密方法</a>
+            </li>
+<li class="result-item hidden" data-type="real" data-keyword="若苗 若苗国学班 若苗少年特训">
+                <a href="ruomiao.html" class="result-link">若苗的王教官也太帅了吧</a>
+            </li>
+            <li class="result-item" data-type="junk">
+                <a href="javascript:void(0);" class="result-link-mock">震惊！下雨天地面竟然会变湿？背后的原因让人暖心</a>
+            </li>
+            <li class="result-item" data-type="junk">
+                <a href="javascript:void(0);" class="result-link-mock">90后老阿姨的绝密朋克养生指南：一边熬夜一边吃保键品</a>
+            </li>
+            <li class="result-item" data-type="junk">
+                <a href="javascript:void(0);" class="result-link-mock">关于今天中午究竟是吃麻辣烫还是黄焖鸡的万字 analysis 报告</a>
+            </li>
+            <li class="result-item" data-type="junk">
+                <a href="javascript:void(0);" class="result-link-mock">【广告】大叔开局只有一把刀，满地爆神装，装备全靠捡！</a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const resultItems = document.querySelectorAll('.result-item');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+
+            // 1. 接收解析外部传参（URL 传参 ?kw=xxx）
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialKeyword = urlParams.get('kw') || ''; 
+            
+            if (initialKeyword) {
+                searchInput.value = initialKeyword;
+                performExactSearch(initialKeyword.trim());
+            } else {
+                toggleJunkItems(true);
+            }
+
+            // 2. 拦截当前页面内的搜索
+            document.getElementById('searchForm').addEventListener('submit', function(e) {
+                const keyword = searchInput.value.trim();
+                
+                // 同步无刷新更新当前页面的浏览器地址栏
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?kw=' + encodeURIComponent(keyword);
+                window.history.pushState({path: newUrl}, '', newUrl);
+                
+                performExactSearch(keyword);
+                e.preventDefault(); 
+            });
+
+            // 3. 多词绑定严格全等匹配判定逻辑
+            function performExactSearch(keyword) {
+                if (!keyword) {
+                    toggleJunkItems(true);
+                    noResultsMessage.style.display = 'none';
+                    return;
+                }
+
+                let hasRealMatch = false;
+
+                resultItems.forEach(item => {
+                    const isReal = item.getAttribute('data-type') === 'real';
+                    
+                    if (isReal) {
+                        // 将支持的触发关键词按空格切开成数组
+                        const allowedKeywords = item.getAttribute('data-keyword').toLowerCase().split(' ');
+                        
+                        // 精准判定：必须完全等于数组中的某一个词
+                        if (allowedKeywords.includes(keyword.toLowerCase())) {
+                            item.classList.remove('hidden');
+                            hasRealMatch = true;
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    }
+                });
+
+                if (hasRealMatch) {
+                    // 对上暗号：显示真实结果，并彻底隐藏无用干扰项
+                    toggleJunkItems(false);
+                    noResultsMessage.style.display = 'none';
+                } else {
+                    // 没对上暗号：继续隐藏真实项，大摇大摆展示干扰项伪装
+                    toggleJunkItems(true);
+                    noResultsMessage.style.display = 'none';
+                }
+            }
+
+            // 控制垃圾干扰项显隐
+            function toggleJunkItems(show) {
+                resultItems.forEach(item => {
+                    if (item.getAttribute('data-type') === 'junk') {
+                        if (show) item.classList.remove('hidden');
+                        else item.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

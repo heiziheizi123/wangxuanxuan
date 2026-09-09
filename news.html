@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>特训学校调查：封闭式教育背后的真相 - 社会新闻频道</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "宋体", SimSun, "Microsoft YaHei", Arial, sans-serif;
+    background: #e6ebf0;
+    color: #333;
+    font-size: 14px;
+}
+
+
+/* =========================
+   顶部新闻网站
+========================= */
+
+.top-header {
+    height: 82px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #4e88b6 0%,
+            #3473a5 48%,
+            #275f8d 100%
+        );
+
+    border-bottom: 3px solid #183f60;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,0.35);
+}
+
+
+.header-inner {
+    width: 1000px;
+    height: 82px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* 新闻 Logo */
+
+.news-logo {
+    width: 245px;
+
+    color: #fff;
+
+    font-family:
+        "宋体",
+        SimSun,
+        serif;
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 2px 2px #173e60;
+}
+
+
+.news-logo small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #d8e7f3;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: normal;
+
+    letter-spacing: 1px;
+}
+
+
+/* 导航 */
+
+.news-nav {
+    height: 82px;
+
+    display: flex;
+}
+
+
+.news-nav a {
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 18px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    border-left:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-right:
+        1px solid
+        rgba(0,0,0,0.08);
+}
+
+
+.news-nav a:hover,
+.news-nav a.active {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #659bc5,
+            #3b76a4
+        );
+
+}
+
+
+/* =========================
+   页面
+========================= */
+
+.page {
+
+    width: 1000px;
+
+    margin:
+        16px auto
+        40px;
+
+}
+
+
+/* 面包屑 */
+
+.breadcrumb {
+
+    height: 35px;
+
+    line-height: 35px;
+
+    padding-left: 12px;
+
+    background: #f8f9fa;
+
+    border:
+        1px solid
+        #cbd2d8;
+
+    box-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.1);
+
+    color: #888;
+
+    font-size: 12px;
+
+}
+
+
+.breadcrumb a {
+
+    color: #3973a1;
+
+    text-decoration: none;
+
+}
+
+
+.breadcrumb span {
+
+    margin:
+        0 7px;
+
+    color: #aaa;
+
+}
+
+
+/* =========================
+   新闻主体
+========================= */
+
+.article {
+
+    margin-top: 13px;
+
+    background: #fff;
+
+    border:
+        1px solid
+        #c7cfd6;
+
+    box-shadow:
+        0 2px 7px
+        rgba(0,0,0,0.18);
+
+}
+
+
+/* =========================
+   新闻标题
+========================= */
+
+.article-header {
+
+    padding:
+        25px
+        38px
+        18px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        #d8dde2;
+
+}
+
+
+.article-category {
+
+    display: inline-block;
+
+    padding:
+        4px 13px;
+
+    margin-bottom:
+        11px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5d91b9,
+            #3d73a0
+        );
+
+    border:
+        1px solid
+        #32638b;
+
+    font-size: 12px;
+
+}
+
+
+.article-title {
+
+    margin:
+        5px 0
+        12px;
+
+    color: #333;
+
+    font-family:
+        "宋体",
+        SimSun,
+        serif;
+
+    font-size: 27px;
+
+    line-height: 1.5;
+
+    font-weight: bold;
+
+}
+
+
+.article-subtitle {
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+.article-meta {
+
+    margin-top:
+        13px;
+
+    padding-top:
+        10px;
+
+    border-top:
+        1px dashed
+        #ccc;
+
+    color: #999;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================
+   新闻正文
+========================= */
+
+.article-body {
+
+    padding:
+        25px
+        48px
+        35px;
+
+}
+
+
+.article-body p {
+
+    margin:
+        15px 0;
+
+    text-indent:
+        2em;
+
+    font-family:
+        "宋体",
+        SimSun,
+        serif;
+
+    font-size:
+        16px;
+
+    line-height:
+        2;
+
+}
+
+
+.article-body h2 {
+
+    margin:
+        28px 0
+        12px;
+
+    padding:
+        8px
+        12px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #6095be,
+            #3c74a3
+        );
+
+    border-left:
+        6px solid
+        #e38a3a;
+
+    border-bottom:
+        1px solid
+        #2c608a;
+
+    font-family:
+        "宋体",
+        SimSun,
+        serif;
+
+    font-size:
+        17px;
+
+}
+
+
+.article-body h3 {
+
+    margin:
+        21px 0
+        8px;
+
+    color:
+        #3d709b;
+
+    font-size:
+        16px;
+
+}
+
+
+/* =========================
+   编者按
+========================= */
+
+.editor-box {
+
+    margin:
+        0 0
+        22px;
+
+    padding:
+        14px 17px;
+
+    background:
+        #f4f7f9;
+
+    border:
+        1px solid
+        #cdd7df;
+
+    box-shadow:
+        inset
+        0 1px 2px
+        rgba(0,0,0,0.04);
+
+    color:
+        #666;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.9;
+
+}
+
+
+.editor-box strong {
+
+    color:
+        #3d7099;
+
+}
+
+
+/* =========================
+   引用
+========================= */
+
+blockquote {
+
+    margin:
+        20px 0;
+
+    padding:
+        13px 18px;
+
+    background:
+        #f4f6f8;
+
+    border-left:
+        5px solid
+        #668fb1;
+
+    color:
+        #555;
+
+    font-family:
+        "宋体",
+        SimSun,
+        serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.9;
+
+}
+
+
+/* =========================
+   调查数据
+========================= */
+
+.data-box {
+
+    margin:
+        20px 0;
+
+    border:
+        1px solid
+        #cbd4db;
+
+    background:
+        #fafbfc;
+
+}
+
+
+.data-title {
+
+    padding:
+        9px 13px;
+
+    color:
+        #fff;
+
+    background:
+        #5689b3;
+
+    font-weight:
+        bold;
+
+}
+
+
+.data-content {
+
+    padding:
+        13px 17px;
+
+    line-height:
+        1.9;
+
+}
+
+
+.data-content table {
+
+    width:
+        100%;
+
+    border-collapse:
+        collapse;
+
+}
+
+
+.data-content td {
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid
+        #d7dde2;
+
+}
+
+
+.data-content td:first-child {
+
+    width:
+        180px;
+
+    background:
+        #edf2f5;
+
+    color:
+        #555;
+
+    font-weight:
+        bold;
+
+}
+
+
+/* =========================
+   采访框
+========================= */
+
+.interview {
+
+    margin:
+        20px 0;
+
+    border:
+        1px solid
+        #d0d6db;
+
+    background:
+        #fafafa;
+
+}
+
+
+.interview-header {
+
+    padding:
+        9px 13px;
+
+    background:
+        #edf2f5;
+
+    border-bottom:
+        1px solid
+        #d3d9de;
+
+    color:
+        #3d719b;
+
+    font-weight:
+        bold;
+
+}
+
+
+.interview-body {
+
+    padding:
+        14px 17px;
+
+    line-height:
+        1.9;
+
+}
+
+
+.interview-body p {
+
+    margin:
+        6px 0;
+
+    text-indent:
+        0;
+
+    font-size:
+        14px;
+
+}
+
+
+/* =========================
+   红色重点提示
+========================= */
+
+.warning-box {
+
+    margin:
+        22px 0;
+
+    padding:
+        14px 17px;
+
+    background:
+        #fff7f4;
+
+    border:
+        1px solid
+        #e1b7aa;
+
+    color:
+        #8b4b3a;
+
+    line-height:
+        1.9;
+
+}
+
+
+.warning-box strong {
+
+    color:
+        #b84f30;
+
+}
+
+
+/* =========================
+   新闻来源
+========================= */
+
+.source-box {
+
+    margin-top:
+        30px;
+
+    padding:
+        14px 17px;
+
+    background:
+        #f4f6f8;
+
+    border:
+        1px solid
+        #d1d7dc;
+
+    color:
+        #777;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.9;
+
+}
+
+
+.source-box a {
+
+    color:
+        #005bbb;
+
+    text-decoration:
+        underline;
+
+}
+
+
+/* =========================
+   虚构声明
+========================= */
+
+.fiction-notice {
+
+    margin-top:
+        18px;
+
+    padding:
+        9px 12px;
+
+    color:
+        #aaa;
+
+    background:
+        #fafafa;
+
+    border-top:
+        1px solid
+        #eee;
+
+    text-align:
+        center;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* =========================
+   操作按钮
+========================= */
+
+.action-bar {
+
+    padding:
+        15px 20px;
+
+    text-align:
+        right;
+
+    background:
+        #f1f4f6;
+
+    border-top:
+        1px solid
+        #d3d9de;
+
+}
+
+
+.action-button {
+
+    display:
+        inline-block;
+
+    padding:
+        7px 17px;
+
+    margin-left:
+        7px;
+
+    color:
+        #fff;
+
+    text-decoration:
+        none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f2a05a,
+            #dd7529
+        );
+
+    border:
+        1px solid
+        #bd5e1b;
+
+    border-radius:
+        2px;
+
+    box-shadow:
+        0 2px 2px
+        rgba(0,0,0,0.2),
+
+        inset
+        0 1px 1px
+        rgba(255,255,255,0.4);
+
+    font-size:
+        12px;
+
+}
+
+
+.action-button:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffb16c,
+            #e37c2c
+        );
+
+}
+
+
+/* =========================
+   页脚
+========================= */
+
+.footer {
+
+    margin-top:
+        18px;
+
+    padding:
+        20px 0;
+
+    text-align:
+        center;
+
+    color:
+        #888;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.9;
+
+    border-top:
+        1px solid
+        #cbd2d8;
+
+}
+
+
+.footer a {
+
+    color:
+        #6689a5;
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================
+   响应式
+========================= */
+
+@media screen and (max-width: 1020px) {
+
+    .header-inner,
+    .page {
+
+        width:
+            94%;
+
+    }
+
+    .news-nav a {
+
+        padding:
+            0 10px;
+
+    }
+
+    .article-body {
+
+        padding:
+            20px;
+
+    }
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .top-header,
+    .header-inner {
+
+        height:
+            auto;
+
+    }
+
+    .header-inner {
+
+        display:
+            block;
+
+    }
+
+    .news-logo {
+
+        width:
+            auto;
+
+        padding:
+            15px;
+
+    }
+
+    .news-nav {
+
+        height:
+            auto;
+
+        flex-wrap:
+            wrap;
+
+    }
+
+    .news-nav a {
+
+        height:
+            38px;
+
+    }
+
+    .article-title {
+
+        font-size:
+            21px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     顶部
+========================= -->
+
+<div class="top-header">
+
+```
+<div class="header-inner">
+
+
+    <div class="news-logo">
+
+        社会新闻
+
+        <small>
+            SOCIAL NEWS CHANNEL
+        </small>
+
+    </div>
+
+
+    <div class="news-nav">
+
+        <a href="#">
+            首页
+        </a>
+
+        <a href="#">
+            社会
+        </a>
+
+        <a href="#">
+            教育
+        </a>
+
+        <a href="#" class="active">
+            深度调查
+        </a>
+
+        <a href="#">
+            评论
+        </a>
+
+        <a href="kuchikomi.html">
+            返回评论
+        </a>
+
+    </div>
+
+
+</div>
+```
+
+</div>
+
+<div class="page">
+
+<!-- =========================
+     面包屑
+========================= -->
+
+<div class="breadcrumb">
+
+```
+<a href="texunqazwsx.html">
+    首页
+</a>
+
+<span>
+    >
+</span>
+
+社会
+
+<span>
+    >
+</span>
+
+教育
+
+<span>
+    >
+</span>
+
+深度调查
+```
+
+</div>
+
+<!-- =========================
+     新闻主体
+========================= -->
+
+<div class="article">
+
+<!-- 新闻标题 -->
+
+<div class="article-header">
+
+```
+<div class="article-category">
+
+    独家调查
+
+</div>
+
+
+<h1 class="article-title">
+
+    震惊！某青少年特训机构被曝存在<br>
+    “封闭管理”争议，家长安全问题引关注
+
+</h1>
+
+
+<div class="article-subtitle">
+
+    多名家长反映孩子入校后长期无法正常联系，
+    一名前学员称“这里和宣传中的学校不一样”
+
+</div>
+
+
+<div class="article-meta">
+
+    本报记者：林晓　　实习记者：陈默　
+    发布时间：2016年08月17日　　责任编辑：社会新闻部
+
+</div>
+```
+
+</div>
+
+<!-- =========================
+     正文
+========================= -->
+
+<div class="article-body">
+
+<!-- 编者按 -->
+
+<div class="editor-box">
+
+```
+<strong>
+    编者按：
+</strong>
+
+近年来，随着青少年厌学、逃学等问题受到社会关注，
+一些以“行为矫正”“军事化管理”“封闭式教育”为主要宣传内容的特训机构逐渐进入公众视野。
+
+然而，在部分家长看来，
+将孩子送入封闭式机构后，家长与孩子之间的信息不对称，
+也可能带来新的安全隐患。
+
+本报记者近日对某青少年成长教育机构进行调查，
+多名家长及前学员向记者讲述了他们所了解的情况。
+```
+
+</div>
+
+<h2>
+
+一、家长口中的“改变”
+
+</h2>
+
+<p>
+
+“孩子进去之前，我们已经不知道该怎么办了。”
+
+</p>
+
+<p>
+
+王女士的女儿曾长期拒绝上学，
+在家中与父母发生多次冲突。
+经过朋友介绍后，
+王女士联系到一家位于郊区的青少年特训机构。
+
+</p>
+
+<p>
+
+机构工作人员告诉她，
+孩子只需要接受六个月左右的系统训练，
+就能够“重新建立生活规律”，
+并逐渐恢复正常学习状态。
+
+</p>
+
+<div class="interview">
+
+<div class="interview-header">
+
+家长王女士（化名）：
+
+</div>
+
+<div class="interview-body">
+
+<p>
+
+“刚开始确实感觉孩子变化很大。
+以前每天睡到中午，
+后来能够按时起床，也开始做一些学习任务。”
+
+</p>
+
+<p>
+
+“学校每隔一段时间会给我们发一些情况反馈。
+他们说孩子状态越来越好了，
+所以我们当时还是比较放心的。”
+
+</p>
+
+</div>
+
+</div>
+
+<h2>
+
+二、“六个月改造成功”背后的疑问
+
+</h2>
+
+<p>
+
+在该机构公开展示的学员档案中，
+部分学员经过数个月的训练后，
+会被评定为“改造成功”。
+
+</p>
+
+<p>
+
+记者注意到，
+一些档案中会详细记录学员入校原因、
+训练周期及最终结果。
+
+</p>
+
+<p>
+
+例如，一名编号为 <strong>YG-2016-0628</strong>
+的学员档案显示，
+该学员因“厌学、长期不去学校”进入机构，
+接受为期六个月的训练，
+最终被评定为“改造成功”。
+
+</p>
+
+<p>
+
+档案显示，
+该学员在训练期间经历了生活作息调整、
+行为习惯训练、学习状态恢复以及返校适应等阶段。
+
+</p>
+
+<blockquote>
+
+“综合评估认为，学员已完成本阶段设定的主要训练目标，
+达到阶段性结业标准。”
+
+</blockquote>
+
+<p>
+
+然而，
+记者调查发现，
+类似的“成功案例”通常只展示了学员进入机构后的变化，
+对于学员在机构期间的具体生活状态，
+以及家长是否能够随时了解孩子情况，
+公开信息并不充分。
+
+</p>
+
+<h2>
+
+三、前学员：有些事情和宣传的不一样
+
+</h2>
+
+<div class="interview">
+
+<div class="interview-header">
+
+前学员“小林”（化名）：
+
+</div>
+
+<div class="interview-body">
+
+<p>
+
+“刚进去的时候，老师告诉我们只是调整作息。
+但是后来每天都有固定的安排。”
+
+</p>
+
+<p>
+
+“有时候不想参加，也不能自己决定。
+大家都要按照统一的时间表生活。”
+
+</p>
+
+<p>
+
+“家长看到的可能只是学校发过去的报告。
+但是在里面的人，感受到的是另外一种生活。”
+
+</p>
+
+</div>
+
+</div>
+
+<p>
+
+对于“小林”的说法，
+记者无法独立核实其全部内容。
+
+</p>
+
+<p>
+
+不过，
+多名曾与该机构有接触的家长均表示，
+机构在宣传过程中强调“严格管理”，
+而家长对于孩子日常生活的具体情况了解有限。
+
+</p>
+
+<h2>
+
+四、网络评论区为何出现大量相似留言？
+
+</h2>
+
+<p>
+
+记者在调查过程中还注意到，
+部分相关机构官方网站的留言区域，
+存在大量格式相似的正面评价。
+
+</p>
+
+<p>
+
+这些留言通常使用“老师负责”“孩子变化很大”
+“非常值得信赖”等相似表述。
+
+</p>
+
+<p>
+
+与此同时，
+也有部分家长在评论区提出质疑，
+认为学校宣传页面与实际情况之间可能存在差异。
+
+</p>
+
+<div class="data-box">
+
+<div class="data-title">
+
+记者观察
+
+</div>
+
+<div class="data-content">
+
+<table>
+
+<tr>
+
+<td>
+公开宣传中的关键词
+</td>
+
+<td>
+专业、严格、负责、改变、成功
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+部分家长关注的问题
+</td>
+
+<td>
+联系方式、探视制度、日常管理、安全保障
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+网络评论主要分布
+</td>
+
+<td>
+学校官网、家长论坛、地方贴吧及社交平台
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<h2>
+
+五、关于“暴力与性侵”的网络传闻
+
+</h2>
+
+<p>
+
+在调查过程中，
+记者还发现网络上存在一些更加严重的传闻。
+
+</p>
+
+<p>
+
+部分匿名网友声称，
+个别特训机构内部可能存在暴力管理、
+体罚甚至性侵等严重问题。
+
+</p>
+
+<p>
+
+由于相关内容大多来自匿名网络发帖，
+记者目前无法确认这些说法是否真实，
+也无法确认其是否与本文所调查机构存在直接关系。
+
+</p>
+
+<div class="warning-box">
+
+<strong>
+重要提醒：
+</strong>
+
+目前没有足够证据证明上述网络传闻与本报道中所涉及的机构存在直接关联。
+
+任何涉及未成年人的严重侵害行为，
+均应由公安机关及有关部门依法调查。
+
+公众不应仅依据未经证实的网络信息作出结论。
+
+</div>
+
+<h2>
+
+六、机构方面回应
+
+</h2>
+
+<div class="interview">
+
+<div class="interview-header">
+
+机构工作人员回应：
+
+</div>
+
+<div class="interview-body">
+
+<p>
+
+“学校所有管理工作均按照内部管理制度进行。”
+
+</p>
+
+<p>
+
+“我们的目的，是帮助存在严重厌学和行为问题的青少年重新建立生活规律。”
+
+</p>
+
+<p>
+
+“对于网络上出现的部分不实信息，
+学校保留依法追究相关责任的权利。”
+
+</p>
+
+</div>
+
+</div>
+
+<p>
+
+对于家长提出的“孩子是否能够随时与家长联系”等问题，
+工作人员表示，
+学校会根据学员实际情况进行统一安排，
+家长可以通过学校提供的联系方式了解孩子情况。
+
+</p>
+
+<h2>
+
+七、记者调查：真正需要关注的是什么？
+
+</h2>
+
+<p>
+
+对于厌学青少年而言，
+重新建立正常的学习和生活状态，
+确实可能需要家庭、学校以及专业机构的共同帮助。
+
+</p>
+
+<p>
+
+但与此同时，
+教育的最终目的并非简单地让孩子“服从管理”，
+而应该帮助青少年重新建立对生活、学习以及未来的认识。
+
+</p>
+
+<p>
+
+如果一个机构只强调“严格”“服从”和“改造”，
+却忽视学生的心理状态和人格尊严，
+那么这种教育方式是否真正有效，
+值得社会进一步思考。
+
+</p>
+
+<blockquote>
+
+“一个孩子是否真正改变，
+不能只看他是否听话，
+还应该看他离开机构以后，
+能否重新面对自己的生活。”
+
+</blockquote>
+
+<h2>
+
+八、家长选择特训机构应保持谨慎
+
+</h2>
+
+<p>
+
+记者提醒，
+家长在选择相关机构时，
+应当充分了解机构资质和管理方式。
+
+</p>
+
+<p>
+
+对于涉及未成年人的教育活动，
+家长应当关注以下问题：
+
+</p>
+
+<ul>
+
+<li>
+机构是否具有合法有效的办学或经营资质；
+</li>
+
+<li>
+孩子是否能够与家长保持合理联系；
+</li>
+
+<li>
+家长是否能够了解孩子真实的生活情况；
+</li>
+
+<li>
+机构是否存在体罚、暴力等不当管理方式；
+</li>
+
+<li>
+孩子是否能够通过正常渠道表达意见和寻求帮助；
+</li>
+
+<li>
+机构是否建立了完善的安全管理制度。
+</li>
+
+</ul>
+
+<h2>
+
+记者结语
+
+</h2>
+
+<p>
+
+对于王瑾岚这样的孩子而言，
+“厌学”和“长期不去学校”可能只是问题的表象。
+
+</p>
+
+<p>
+
+真正需要解决的，
+也许是家庭关系、校园环境、
+个人心理以及成长过程中长期积累的各种问题。
+
+</p>
+
+<p>
+
+六个月的训练究竟能够带来什么，
+一份写着“改造成功”的报告并不能说明全部。
+
+</p>
+
+<p>
+
+孩子离开机构以后，
+是否真正回到了正常的生活，
+是否愿意重新面对学校，
+是否能够与家人建立正常的沟通，
+或许才是判断一次教育是否真正成功的标准。
+
+</p>
+
+<!-- 来源 -->
+
+<div class="source-box">
+
+<strong>
+
+资料来源：
+
+</strong>
+
+本报记者调查采访、家长公开留言、
+匿名受访者口述及公开网络资料整理。
+
+<br>
+
+<strong>
+
+相关说明：
+
+</strong>
+
+文中“王瑾岚”及
+“YG-2016-0628”
+为报道中使用的虚构人物及档案编号。
+
+<br>
+
+对于涉及暴力、虐待及性侵的相关网络传闻，
+本报道未将其作为已经确认的事实。
+
+<br>
+
+如需了解相关争议，
+请以公安机关、司法机关及权威媒体正式发布的信息为准。
+
+</div>
+
+<!-- 编辑部声明 -->
+
+<div class="editor-note">
+
+<strong>
+
+编辑部声明：
+
+</strong>
+
+本报道旨在讨论青少年特训机构的教育模式及未成年人安全问题。
+
+对于文中涉及的匿名爆料及网络传闻，
+本刊不作事实认定。
+
+如涉及违法犯罪行为，
+应由相关司法机关依法调查处理。
+
+</div>
+
+</div>
+
+<!-- =========================
+     虚构声明
+========================= -->
+
+<div class="fiction-notice">
+
+※ 本页面为游戏剧情内容，文中人物、机构、新闻事件及相关报道均为虚构设定，纯属虚构，与现实中的任何个人、机构或事件无关。
+
+</div>
+
+
+<a
+class="action-button"
+href="javascript:window.print();"
+
+>
+
+打印本页
+
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+     页脚
+========================= -->
+
+<div class="footer">
+
+社会新闻频道　|　深度调查栏目
+
+<br>
+
+本页面为游戏内虚构新闻页面
+
+<br>
+
+<a href="texunqazwsx.html">
+返回学校网站
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

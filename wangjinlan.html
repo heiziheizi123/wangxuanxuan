@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>学员成长档案 - 王瑾岚</title>
+
+<style> * { box-sizing: border-box; } html, body { margin: 0; padding: 0; } body { font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif; background: #e8edf3; color: #333; font-size: 14px; } /* ========================= 顶部网站区域 ========================= */ .top-header { height: 74px; background: linear-gradient(to bottom, #4d88bd 0%, #2f6fa8 48%, #255e91 100%); border-bottom: 1px solid #1e4f7d; box-shadow: 0 2px 5px rgba(0,0,0,0.35); } .header-inner { width: 1000px; height: 74px; margin: 0 auto; display: flex; align-items: center; } .site-logo { width: 235px; color: #fff; font-family: "宋体", SimSun, serif; font-size: 23px; font-weight: bold; text-shadow: 1px 1px 2px #17466f; } .site-logo small { display: block; font-family: Arial, sans-serif; font-size: 10px; font-weight: normal; letter-spacing: 1px; margin-top: 4px; color: #dceafa; } .main-nav { height: 74px; display: flex; align-items: stretch; } .main-nav a { display: flex; align-items: center; padding: 0 21px; color: #fff; text-decoration: none; font-size: 14px; border-left: 1px solid rgba(255,255,255,0.13); border-right: 1px solid rgba(0,0,0,0.08); } .main-nav a:hover, .main-nav a.active { background: linear-gradient(to bottom, #6da3d2, #3a78ae); color: #fff; } /* ========================= 页面主体 ========================= */ .page { width: 1000px; margin: 18px auto 35px; } /* 面包屑 */ .breadcrumb { height: 36px; line-height: 36px; padding-left: 12px; color: #777; font-size: 12px; background: #f7f8fa; border: 1px solid #d1d8df; box-shadow: 0 1px 2px rgba(0,0,0,0.08); } .breadcrumb a { color: #4d7fae; text-decoration: none; } .breadcrumb span { color: #aaa; margin: 0 7px; } /* ========================= 报告顶部 ========================= */ .report-header { margin-top: 12px; background: #fff; border: 1px solid #c8d0d8; box-shadow: 0 2px 5px rgba(0,0,0,0.16); } .report-title-bar { height: 52px; line-height: 52px; padding: 0 18px; color: #fff; font-size: 19px; font-weight: bold; background: linear-gradient(to bottom, #558fc1 0%, #3675aa 50%, #2b6699 100%); border-bottom: 1px solid #24567f; text-shadow: 1px 1px 1px rgba(0,0,0,0.3); } .report-subtitle { padding: 11px 18px; background: #f4f7fa; border-bottom: 1px solid #d8dfe5; color: #777; font-size: 12px; } /* ========================= 学员信息 ========================= */ .student-info { display: flex; padding: 18px; background: #fff; } .student-photo { width: 120px; height: 150px; background: linear-gradient(to bottom, #d9e1e8, #eef2f5); border: 1px solid #b8c3cc; box-shadow: inset 0 1px 4px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center; color: #8a969f; font-size: 12px; margin-right: 18px; } .student-photo span { text-align: center; line-height: 1.8; } .info-table { flex: 1; border-collapse: collapse; font-size: 13px; } .info-table td { height: 37px; border: 1px solid #d7dde3; padding: 0 12px; } .info-table .label { width: 110px; background: #edf2f6; color: #555; font-weight: bold; } .info-table .value { background: #fff; } /* ========================= 内容模块 ========================= */ .content-box { margin-top: 13px; background: #fff; border: 1px solid #cbd3db; box-shadow: 0 2px 5px rgba(0,0,0,0.12); } .box-title { height: 40px; line-height: 40px; padding: 0 15px; color: #fff; font-size: 15px; font-weight: bold; background: linear-gradient(to bottom, #6299c6, #3978ad); border-bottom: 1px solid #2c628f; text-shadow: 1px 1px 1px rgba(0,0,0,0.25); } .box-title .number { display: inline-block; width: 24px; height: 24px; line-height: 24px; margin-right: 7px; text-align: center; background: #f28c38; border-radius: 2px; font-family: Arial, sans-serif; font-size: 12px; color: #fff; box-shadow: inset 0 1px 1px rgba(255,255,255,0.35); } .box-content { padding: 17px 20px; line-height: 1.9; color: #444; } .box-content p { margin: 7px 0; text-indent: 2em; } .box-content ul { margin: 5px 0; padding-left: 25px; } .box-content li { margin: 6px 0; } /* ========================= 状态标签 ========================= */ .status-success { display: inline-block; padding: 3px 13px; color: #fff; background: #5ca85c; border: 1px solid #478d47; box-shadow: inset 0 1px 1px rgba(255,255,255,0.25); font-size: 12px; font-weight: bold; } .status-reason { display: inline-block; padding: 3px 13px; color: #fff; background: #e58b43; border: 1px solid #c96e28; box-shadow: inset 0 1px 1px rgba(255,255,255,0.25); font-size: 12px; } /* ========================= 六个月时间轴 ========================= */ .timeline { padding: 5px 0; } .timeline-item { display: flex; margin: 0 0 15px; } .timeline-month { width: 90px; flex-shrink: 0; padding-top: 2px; text-align: center; } .timeline-month strong { display: block; padding: 6px 3px; color: #fff; background: #4a84b7; border: 1px solid #326b9d; box-shadow: 0 1px 2px rgba(0,0,0,0.2); font-size: 12px; } .timeline-detail { flex: 1; margin-left: 15px; padding: 10px 13px; background: #f6f8fa; border: 1px solid #d5dce2; box-shadow: inset 0 1px 2px rgba(0,0,0,0.04); } .timeline-detail strong { color: #3d719f; } .timeline-detail p { margin: 4px 0; text-indent: 0; } /* ========================= 评估表 ========================= */ .assessment-table { width: 100%; border-collapse: collapse; margin-top: 5px; } .assessment-table th, .assessment-table td { border: 1px solid #d3dae1; padding: 9px 10px; text-align: left; } .assessment-table th { background: #edf2f6; color: #4c5c69; font-weight: bold; } .assessment-table td { background: #fff; } .good { color: #438e43; font-weight: bold; } /* ========================= 结论区域 ========================= */ .final-result { margin-top: 13px; background: #fff; border: 1px solid #c7d0d8; box-shadow: 0 2px 5px rgba(0,0,0,0.15); } .result-inner { padding: 20px; text-align: center; background: linear-gradient(to bottom, #fafcfd, #edf2f5); } .result-title { color: #4a84b7; font-size: 22px; font-weight: bold; margin-bottom: 10px; } .result-badge { display: inline-block; padding: 8px 32px; color: #fff; background: linear-gradient(to bottom, #f5a45c, #e57825); border: 1px solid #c86419; box-shadow: 0 2px 3px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.35); font-size: 17px; font-weight: bold; } /* ========================= 底部按钮 ========================= */ .action-bar { padding: 14px 18px; text-align: right; background: #f1f4f7; border-top: 1px solid #d5dce2; } .action-button { display: inline-block; padding: 7px 18px; margin-left: 7px; color: #fff; text-decoration: none; font-size: 12px; background: linear-gradient(to bottom, #f3a25d, #df7628); border: 1px solid #bd5f1c; border-radius: 2px; box-shadow: 0 2px 2px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.4); } .action-button:hover { background: linear-gradient(to bottom, #ffb675, #e47b2b); } /* ========================= 网站底部 ========================= */ .footer { margin-top: 18px; padding: 20px 0; color: #888; font-size: 12px; text-align: center; line-height: 1.8; border-top: 1px solid #cfd6dd; } .footer a { color: #6689a5; text-decoration: none; } /* ========================= 响应式 ========================= */ @media screen and (max-width: 1020px) { .header-inner, .page { width: 94%; } .main-nav a { padding: 0 12px; } } @media screen and (max-width: 700px) { .top-header, .header-inner { height: auto; } .header-inner { display: block; } .site-logo { width: auto; padding: 12px; } .main-nav { height: auto; flex-wrap: wrap; } .main-nav a { height: 38px; } .student-info { display: block; } .student-photo { margin-bottom: 15px; } .info-table { width: 100%; } .timeline-item { display: block; } .timeline-month { width: 90px; margin-bottom: 6px; } } </style>
+
+</head>
+
+<body>
+
+<!-- 顶部网站导航 -->
+
+<div class="top-header"> <div class="header-inner">
+
+    <div class="site-logo">
+        阳光青少年成长学校
+        <small>YANGGUANG YOUTH GROWTH SCHOOL</small>
+    </div>
+
+    <div class="main-nav">
+        <a href="texunqazwsx.html">学校首页</a>
+        <a href="#">学校介绍</a>
+        <a href="#">课程设置</a>
+        <a href="#">校园环境</a>
+        <a href="#" class="active">学员档案</a>
+        <a href="texun-login.html">家长中心</a>
+    </div>
+
+</div>
+
+</div>
+
+<div class="page">
+
+<!-- 面包屑 -->
+<div class="breadcrumb">
+    <a href="texunqazwsx.html">首页</a>
+    <span>></span>
+    学员档案
+    <span>></span>
+    王瑾岚入校报告
+</div>
+
+
+<!-- 报告主体 -->
+<div class="report-header">
+
+    <div class="report-title-bar">
+        学员成长与行为矫正阶段性报告
+    </div>
+
+    <div class="report-subtitle">
+        学员档案编号：YG-2016-0628　　档案状态：已结业　　报告类型：六个月阶段总结
+    </div>
+
+
+    <!-- 学员基本信息 -->
+    <div class="student-info">
+
+        <div class="student-photo">
+            <span>
+                学员<br>
+                档案照片<br>
+                <br>
+                暂无照片
+            </span>
+        </div>
+
+        <table class="info-table">
+
+            <tr>
+                <td class="label">学员姓名</td>
+                <td class="value">王瑾岚</td>
+
+                <td class="label">档案状态</td>
+                <td class="value">
+                    <span class="status-success">已完成</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">入校原因</td>
+                <td class="value">
+                    <span class="status-reason">厌学 / 长期缺勤</span>
+                </td>
+
+                <td class="label">改造周期</td>
+                <td class="value">6个月</td>
+            </tr>
+
+            <tr>
+                <td class="label">入校情况</td>
+                <td class="value">长期不去学校，学习状态持续下降</td>
+
+                <td class="label">最终结果</td>
+                <td class="value">
+                    <span class="status-success">改造成功</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">报告日期</td>
+                <td class="value">六个月阶段训练结束后</td>
+
+                <td class="label">综合评定</td>
+                <td class="value">达到阶段性培养目标</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- 一、入校情况 -->
+<div class="content-box">
+
+    <div class="box-title">
+        <span class="number">01</span>
+        入校前基本情况
+    </div>
+
+    <div class="box-content">
+
+        <p>
+            王瑾岚入校前一段时间存在较为明显的厌学表现。根据入校时的情况记录，
+            学员长期缺席正常学校课程，逐渐形成了不愿前往学校、不愿面对学习任务的状态。
+            在日常生活中作息不规律，对学习安排缺乏主动性，对家长及教师提出的返校要求存在明显抵触情绪。
+        </p>
+
+        <p>
+            入校初期，学员对新的生活环境表现出较强的不适应，面对固定的生活安排和每日训练任务时，
+            存在情绪波动及消极应对情况。学校根据学员实际情况制定六个月阶段性训练计划，
+            主要从生活作息、行为习惯、情绪管理、学习适应及返校准备等方面逐步进行调整。
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- 二、入校目标 -->
+<div class="content-box">
+
+    <div class="box-title">
+        <span class="number">02</span>
+        阶段性培养目标
+    </div>
+
+    <div class="box-content">
+
+        <ul>
+            <li>帮助学员重新建立稳定、规律的日常生活作息。</li>
+            <li>逐步减少对学习任务的抵触情绪，建立基本的学习责任意识。</li>
+            <li>改善长期缺勤造成的生活与学习节奏脱节问题。</li>
+            <li>引导学员正确认识自身厌学原因，提升自我管理能力。</li>
+            <li>通过阶段性训练，逐步恢复正常学习和社会生活状态。</li>
+            <li>为后续恢复正常学校生活及重新适应校园环境做好准备。</li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+<!-- 三、六个月训练记录 -->
+<div class="content-box">
+
+    <div class="box-title">
+        <span class="number">03</span>
+        六个月阶段训练记录
+    </div>
+
+    <div class="box-content">
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-month">
+                    <strong>第1个月</strong>
+                </div>
+
+                <div class="timeline-detail">
+                    <strong>环境适应与生活作息调整</strong>
+                    <p>
+                        重点帮助学员适应新的生活环境，建立固定起床、就寝及日常活动时间。
+                        初期学员对训练安排存在抵触，通过持续沟通和生活管理逐渐适应集体生活。
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <div class="timeline-month">
+                    <strong>第2个月</strong>
+                </div>
+
+                <div class="timeline-detail">
+                    <strong>行为习惯与自我管理训练</strong>
+                    <p>
+                        开始加强个人事务管理和每日任务完成情况记录。
+                        学员逐渐能够按照要求完成日常安排，拖延和逃避行为有所减少，
+                        对每日任务的接受程度逐步提高。
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <div class="timeline-month">
+                    <strong>第3个月</strong>
+                </div>
+
+                <div class="timeline-detail">
+                    <strong>学习状态逐步恢复</strong>
+                    <p>
+                        根据学员原有学习情况逐步安排基础学习任务。
+                        训练重点由单纯完成任务转向培养学习过程中的持续性和主动性。
+                        学员开始能够保持相对稳定的学习时间。
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <div class="timeline-month">
+                    <strong>第4个月</strong>
+                </div>
+
+                <div class="timeline-detail">
+                    <strong>情绪管理与沟通训练</strong>
+                    <p>
+                        针对学员此前长期厌学期间形成的负面情绪和沟通问题进行阶段性调整。
+                        鼓励学员表达自身想法，并逐步学习使用更加合理的方式处理压力和矛盾。
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <div class="timeline-month">
+                    <strong>第5个月</strong>
+                </div>
+
+                <div class="timeline-detail">
+                    <strong>返校适应准备</strong>
+                    <p>
+                        逐步模拟正常学校生活中的作息和学习安排。
+                        学员能够较为稳定地完成每日学习计划，对重新进入正常学习环境的抵触程度明显降低。
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="timeline-item">
+                <div class="timeline-month">
+                    <strong>第6个月</strong>
+                </div>
+
+                <div class="timeline-detail">
+                    <strong>综合巩固与阶段结业</strong>
+                    <p>
+                        对前五个月训练成果进行综合巩固。
+                        学员能够按照规定完成日常生活和学习安排，能够主动参与部分学习活动，
+                        基本达到阶段性训练目标。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- 四、阶段评估 -->
+<div class="content-box">
+
+    <div class="box-title">
+        <span class="number">04</span>
+        六个月综合评估
+    </div>
+
+    <div class="box-content">
+
+        <table class="assessment-table">
+
+            <tr>
+                <th>评估项目</th>
+                <th>入校初期</th>
+                <th>六个月后</th>
+                <th>评估结果</th>
+            </tr>
+
+            <tr>
+                <td>日常作息</td>
+                <td>不规律</td>
+                <td>基本规律</td>
+                <td class="good">明显改善</td>
+            </tr>
+
+            <tr>
+                <td>学习态度</td>
+                <td>明显抵触</td>
+                <td>能够接受日常学习安排</td>
+                <td class="good">有所改善</td>
+            </tr>
+
+            <tr>
+                <td>任务完成情况</td>
+                <td>经常逃避</td>
+                <td>能够按要求完成</td>
+                <td class="good">明显改善</td>
+            </tr>
+
+            <tr>
+                <td>情绪状态</td>
+                <td>波动较大</td>
+                <td>趋于稳定</td>
+                <td class="good">基本稳定</td>
+            </tr>
+
+            <tr>
+                <td>自我管理</td>
+                <td>主动性不足</td>
+                <td>能够进行基本自我安排</td>
+                <td class="good">达到阶段目标</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- 五、改造结果 -->
+<div class="final-result">
+
+    <div class="box-title">
+        <span class="number">05</span>
+        最终改造结果
+    </div>
+
+    <div class="result-inner">
+
+        <div class="result-title">
+            六个月阶段训练结果
+        </div>
+
+        <div class="result-badge">
+            改造结果：成功
+        </div>
+
+        <p style="margin:18px auto 5px;max-width:760px;line-height:2;color:#555;">
+            经过六个月的持续训练与阶段性调整，王瑾岚的生活作息、
+            学习状态及自我管理能力均较入校初期有所改善。
+            学员能够接受正常的学习安排，能够完成基本的日常任务，
+            对学校生活和学习任务的抵触程度明显降低。
+        </p>
+
+        <p style="margin:5px auto;max-width:760px;line-height:2;color:#555;">
+            综合评估认为，学员已完成本阶段设定的主要训练目标，
+            达到阶段性结业标准，改造结果评定为<strong style="color:#4a8d4a;">成功</strong>。
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- 六、学校评语 -->
+<div class="content-box">
+
+    <div class="box-title">
+        <span class="number">06</span>
+        学校综合评语
+    </div>
+
+    <div class="box-content">
+
+        <p>
+            王瑾岚在入校初期存在较为明显的厌学情绪和长期缺勤问题，
+            在训练过程中经历了由环境适应、行为调整到学习状态恢复的逐步变化。
+            整体来看，学员能够在六个月的训练周期内逐渐建立规律的生活节奏，
+            并对学习任务形成基本的接受和适应能力。
+        </p>
+
+        <p>
+            后续建议继续保持规律的作息安排，家长与学校之间保持及时沟通，
+            避免短期内出现过大的学习压力。在重新回归正常学习环境后，
+            应继续关注学员的情绪变化及学习适应情况，帮助其逐步建立长期稳定的学习习惯。
+        </p>
+
+        <p>
+            <strong>综合结论：本阶段训练达到预期目标，学员具备进入下一阶段正常学习生活的基础条件。</strong>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- 操作按钮 -->
+<div class="action-bar">
+
+    <a class="action-button" href="texunqazwsx.html">
+        返回学校首页
+    </a>
+
+    <a class="action-button" href="javascript:window.print();">
+        打印本报告
+    </a>
+
+</div>
+
+
+<!-- 页脚 -->
+<div class="footer">

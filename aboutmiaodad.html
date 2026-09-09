@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>一路向城关吧-千度粘吧</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background-color: #dee4ed;
+    color: #333;
+}
+
+/* 顶部蓝色导航 */
+.top-blue-bar {
+    background: #2d8cf0;
+    color: #fff;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-blue-bar .logo {
+    font-size: 16px;
+    font-weight: bold;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #fff;
+}
+
+.search-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #333;
+    padding: 2px 4px;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 4px;
+}
+
+/* 吧头 */
+.bar-header-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.bar-header {
+    background: #fff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d1d7e2;
+}
+
+.bar-avatar {
+    width: 55px;
+    height: 55px;
+    background: #4ba3e3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.3;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}
+
+.bar-info {
+    margin-left: 12px;
+    flex: 1;
+}
+
+.bar-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.bar-name::after {
+    content: "＋关注";
+    font-size: 11px;
+    background: #ff4d4f;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    font-weight: normal;
+}
+
+.bar-stats {
+    font-size: 11px;
+    color: #777;
+    margin-top: 4px;
+}
+
+/* 导航标签 */
+.nav-tabs {
+    display: flex;
+    background: #fff;
+    border-bottom: 1px solid #d1d7e2;
+    font-size: 14px;
+}
+
+.tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    color: #666;
+    position: relative;
+}
+
+.tab-item.active {
+    color: #2d8cf0;
+    font-weight: bold;
+}
+
+.tab-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    width: 30%;
+    height: 3px;
+    background: #2d8cf0;
+    border-radius: 2px;
+}
+
+/* 标题 */
+.main-post-title {
+    background: #fff;
+    padding: 15px 15px 10px;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.4;
+}
+
+/* 楼层 */
+.floor {
+    background: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f5;
+}
+
+.floor-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.avatar-link {
+    text-decoration: none;
+    display: block;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    background: #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.username {
+    font-weight: bold;
+    color: #444;
+    text-decoration: none;
+}
+
+.lz-badge {
+    background: #2d8cf0;
+    color: #fff;
+    font-size: 9px;
+    padding: 1px 3px;
+    border-radius: 2px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.floor-num-time {
+    color: #999;
+    font-size: 11px;
+    margin-top: 2px;
+    display: flex;
+    gap: 8px;
+}
+
+.floor-content {
+    font-size: 15px;
+    color: #111;
+    word-break: break-all;
+    margin-top: 4px;
+    line-height: 1.7;
+}
+
+/* 帖子图片 */
+.post-img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+}
+
+.img-desc {
+    margin-top: 5px;
+    color: #999;
+    font-size: 11px;
+}
+
+/* 楼中楼 */
+.sub-comments {
+    background: #f4f6f9;
+    padding: 10px 12px;
+    border-radius: 4px;
+    margin-top: 12px;
+    font-size: 13px;
+    border: 1px solid #e9edf3;
+}
+
+.sub-item {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #d1d7e2;
+    line-height: 1.5;
+}
+
+.sub-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.sub-username {
+    color: #2d8cf0;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sub-time {
+    text-align: right;
+    color: #999;
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.fake-note {
+    text-align: center;
+    padding: 20px;
+    font-size: 10px;
+    color: #9aa5b5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 顶部 -->
+<div class="top-blue-bar">
+    <a class="logo" href="#">千度粘吧</a>
+
+    <form action="search.html" class="search-form" method="GET">
+        <input class="search-input"
+               name="kw"
+               placeholder="搜索贴吧内帖子..."
+               required
+               type="text"/>
+        <button class="search-btn" type="submit">🔍</button>
+    </form>
+</div>
+
+<!-- 吧头 -->
+<a class="bar-header-link" href="oldchengguan.html">
+<div class="bar-header">
+
+    <div class="bar-avatar">
+        一路向城关<br/>吧
+    </div>
+
+    <div class="bar-info">
+        <div class="bar-name">一路向城关吧</div>
+        <div class="bar-stats">
+            关注：1324　帖子：2312
+        </div>
+    </div>
+
+</div>
+</a>
+
+<!-- 导航 -->
+<div class="nav-tabs">
+    <div class="tab-item active">看帖</div>
+    <div class="tab-item">图片</div>
+    <div class="tab-item">精品</div>
+</div>
+
+<!-- 标题 -->
+<div class="main-post-title">
+【824】有人知道苗苗她爸以前那些传闻吗？
+</div>
+
+
+<!-- 1楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="login.html">
+<div class="avatar-placeholder" style="background:#6c8ebf;">旧</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">旧城故事会</a>
+<span class="lz-badge">楼主</span>
+</div>
+
+<div class="floor-num-time">
+<span>1楼</span>
+<span>2012-08-17 21:43</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+最近听家里人聊天又说到苗苗她爸。
+
+<br><br>
+
+不知道这里有没有年纪大一点、知道他年轻时候事情的人。
+
+<br><br>
+
+听说他早年家境挺差的，家里根本没什么关系，但是这个人从小确实挺有才华，尤其喜欢电影和摄影。
+
+<br><br>
+
+后来准备考导演系的时候，好像有一次去庙里，碰到一个和尚。
+
+<br><br>
+
+具体叫什么没人知道，我们这边以前提起他，都用一个挺夸张的外号：
+
+<br><br>
+
+<b>“无上圣佛”</b>。
+
+<br><br>
+
+据说苗苗她爸当时特别紧张，那个和尚跟他说了几句话，还让他安心去考。
+
+<br><br>
+
+结果后来居然真的考上了。
+
+<!-- 拜佛图片 -->
+<img src="miaoba.jpg" class="post-img"/>
+
+<div class="img-desc">
+以前有人传的拜佛照片，不知道具体是哪一年拍的。
+</div>
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">南街旧住户</a>：
+<span>这个我也听说过，他家以前条件确实一般。</span>
+<div class="sub-time">21:51</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">今天不下雨</a>：
+<span>考上导演系跟和尚有什么关系……明显还是自己有本事吧。</span>
+<div class="sub-time">21:55</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">旧城故事会</a>：
+<span>问题就是他自己好像不这么想。</span>
+<div class="sub-time">21:58</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 2楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="#">
+<div class="avatar-placeholder" style="background:#888;">北</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">北门卖汽水的</a>
+</div>
+
+<div class="floor-num-time">
+<span>2楼</span>
+<span>2012-08-17 22:06</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+后面的版本我听过。
+
+<br><br>
+
+他考上以后就越来越信这些东西了。
+
+<br><br>
+
+好像他觉得自己本来根本考不上，是因为那次拜佛以后“运气变了”。
+
+<br><br>
+
+后来只要碰到比较大的事情，他都会去求。
+
+<br><br>
+
+工作、拍东西、找投资什么的都去。
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">胶片过期了</a>：
+<span>那个年代搞艺术的信这些其实也不少。</span>
+<div class="sub-time">22:11</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">北门卖汽水的</a>：
+<span>普通烧香当然没什么，主要是听说他后来越来越魔怔。</span>
+<div class="sub-time">22:13</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 3楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="#">
+<div class="avatar-placeholder" style="background:#c48a42;">茶</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">茶杯盖找不到</a>
+</div>
+
+<div class="floor-num-time">
+<span>3楼</span>
+<span>2012-08-17 22:29</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+苗苗妈是不是就是他后来求佛的时候认识的那个？
+
+<br><br>
+
+我记得两个人年龄差挺大的。
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">旧城故事会</a>：
+<span>对，听到的说法是小13岁。</span>
+<div class="sub-time">22:32</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">茶杯盖找不到</a>：
+<span>我记得她那时候还挺年轻的。</span>
+<div class="sub-time">22:34</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">今天不下雨</a>：
+<span>年龄差本身倒说明不了什么。</span>
+<div class="sub-time">22:38</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 4楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="#">
+<div class="avatar-placeholder" style="background:#d15b5b;">？</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">匿名用户11908</a>
+</div>
+
+<div class="floor-num-time">
+<span>4楼</span>
+<span>2012-08-17 23:04</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+没人说苗苗小时候那个事情？
+
+<br><br>
+
+我也是听别人讲的，不保证真假。
+
+<br><br>
+
+以前有人看到苗苗身上有几个挺奇怪的圆形痕迹。
+
+<br><br>
+
+不是普通擦伤那种。
+
+<br><br>
+
+有人说看起来特别像烟头或者香头碰到以后留下来的。
+
+<br><br>
+
+当时苗苗爸的解释好像是：
+
+<br><br>
+
+<b>“小朋友自己玩的时候不小心碰到了。”</b>
+
+<br><br>
+
+但是当时就有人觉得不对。
+
+<br><br>
+
+因为那个痕迹所在的位置，正常情况下小孩自己玩东西好像不太容易碰到。
+
+<!-- 疤痕图片 -->
+<img src="xiang.jpg" class="post-img"/>
+
+<div class="img-desc">
+当时流传的伤痕照片。
+</div>
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">别问我是谁</a>：
+<span>这个我小时候真听大人讲过。</span>
+<div class="sub-time">23:09</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">今天不下雨</a>：
+<span>等下，光凭一个圆形疤也不能说就是香烫的吧。</span>
+<div class="sub-time">23:12</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">匿名用户11908</a>：
+<span>所以我说了只是传闻。主要是当时那个位置让人觉得奇怪。</span>
+<div class="sub-time">23:15</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">纸飞机</a>：
+<span>如果真是小孩自己碰到的，当时没人问她本人吗？</span>
+<div class="sub-time">23:19</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">匿名用户11908</a>：
+<span>不知道，反正后来也没下文。</span>
+<div class="sub-time">23:22</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 5楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="#">
+<div class="avatar-placeholder" style="background:#7159a6;">影</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">胶片过期了</a>
+</div>
+
+<div class="floor-num-time">
+<span>5楼</span>
+<span>2012-08-17 23:47</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+我比较想知道的是另一个传闻。
+
+<br><br>
+
+以前圈里不是有人说他对年轻女演员动手动脚吗？
+
+<br><br>
+
+我听过的版本更严重，说有女演员私下指控他猥亵。
+
+<br><br>
+
+但是这个事情我一直没找到当年的报道，所以不知道最开始到底是谁传出来的。
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">八毫米</a>：
+<span>我也听过，不过每个人讲的版本都不一样。</span>
+<div class="sub-time">23:51</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">南街旧住户</a>：
+<span>这种事情没证据还是别直接当真的好。</span>
+<div class="sub-time">23:54</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">胶片过期了</a>：
+<span>所以我才说是传闻，我也想知道有没有人知道来源。</span>
+<div class="sub-time">23:57</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 6楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="#">
+<div class="avatar-placeholder" style="background:#4f9d7a;">城</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">城关老住户</a>
+</div>
+
+<div class="floor-num-time">
+<span>6楼</span>
+<span>2012-08-18 00:16</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+把这楼从头看到尾，感觉苗苗她爸这个人最奇怪的其实不是“信佛”。
+
+<br><br>
+
+家里穷，自己考出去，然后把人生改变归结到考试前遇见的和尚身上。
+
+<br><br>
+
+后来事业上的事情去求，婚姻也跟这个圈子产生联系。
+
+<br><br>
+
+再往后苗苗身上的伤、女演员那些传言又都冒出来。
+
+<br><br>
+
+真假先不说。
+
+<br><br>
+
+但这些事情为什么最后全围着他传，确实挺怪的。
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">今天不下雨</a>：
+<span>前面的经历是真的也不代表后面的传闻就是真的，还是分开看吧。</span>
+<div class="sub-time">00:19</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">旧城故事会</a>：
+<span>同意。我开这个帖本来也是想看看有没有人知道这些说法最早从哪来的。</span>
+<div class="sub-time">00:23</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">纸飞机</a>：
+<span>不过苗苗那个疤的事情确实最让我在意。</span>
+<div class="sub-time">00:26</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- 7楼 -->
+<div class="floor">
+
+<div class="floor-header">
+
+<a class="avatar-link" href="#">
+<div class="avatar-placeholder" style="background:#777;">路</div>
+</a>
+
+<div class="user-info">
+<div>
+<a class="username" href="#">路过看看而已</a>
+</div>
+
+<div class="floor-num-time">
+<span>7楼</span>
+<span>2012-08-18 00:42</span>
+</div>
+
+</div>
+</div>
+
+<div class="floor-content">
+
+插一句。
+
+<br><br>
+
+你们一直叫那个和尚“无上圣佛”，这应该根本不是法号吧？
+
+<br><br>
+
+听起来更像后来的人给他起的代称。
+
+<div class="sub-comments">
+
+<div class="sub-item">
+<a class="sub-username" href="#">旧城故事会</a>：
+<span>对，不是真名。我们这边以前的人就是这么叫，真正叫什么没人知道。</span>
+<div class="sub-time">00:45</div>
+</div>
+
+<div class="sub-item">
+<a class="sub-username" href="#">路过看看而已</a>：
+<span>那就更像那种越传越玄乎的老故事了。</span>
+<div class="sub-time">00:48</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="fake-note">
+本页面人物、事件及相关讨论均为虚构内容
+</div>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海镜花动画吧_百度贴吧</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "宋体", Arial, Helvetica, sans-serif; background-color: #dee4ed; color: #333; font-size: 12px; }
+        a { color: #2d64b5; text-decoration: none; }
+        a:hover { text-decoration: underline; color: #e44444; }
+
+        /* 百度贴吧经典顶栏 */
+        .tieba-top-nav { background: #fff; border-bottom: 1px solid #d1d7e2; height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; min-width: 1000px; }
+        .top-left-logo { font-size: 14px; font-weight: bold; color: #2d8cf0; font-family: Arial, sans-serif; }
+        .top-left-logo span { color: #555; font-size: 12px; font-weight: normal; margin-left: 10px; }
+        .top-right-zone { display: flex; align-items: center; gap: 10px; }
+        .search-box-container { display: flex; align-items: center; background: #fff; border: 1px solid #ccc; padding: 2px; }
+        .search-input { border: none; outline: none; padding: 3px 5px; width: 180px; font-size: 12px; }
+        .search-btn { background: #38f; color: #fff; border: none; padding: 3px 12px; cursor: pointer; font-size: 12px; }
+        .login-avatar-btn { width: 26px; height: 26px; border-radius: 50%; background: #e1e6f0; border: 1px solid #b0b9c8; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #666; font-size: 14px; }
+
+        /* 贴吧头部 Banner 区域 (根据 image_2.png 像素级锁死宽度) */
+        .bar-main-header { 
+            width: 1000px; 
+            height: 120px;
+            margin: 15px auto 0 auto; 
+            background: #4a5361 url('https://picsum.photos/1000/120?grayscale') no-repeat center; 
+            background-size: cover;
+            border: 1px solid #b0b9c8; 
+            border-bottom: none; 
+            position: relative; 
+            display: flex; 
+            align-items: flex-end; 
+            padding: 15px;
+        }
+        .bar-header-content { display: flex; align-items: center; width: 100%; z-index: 2; position: relative; }
+        .bar-avatar-box { width: 80px; height: 80px; background: #fff; padding: 3px; border: 1px solid #999; }
+        .bar-avatar-inner { width: 100%; height: 100%; background: #5c7aab; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; text-align: center; line-height: 1.4; color: #fff; }
+        .bar-text-details { margin-left: 15px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+        .bar-title-row { display: flex; align-items: center; gap: 8px; }
+        .bar-title-name { font-size: 18px; font-family: "微软雅黑", sans-serif; font-weight: bold; }
+        .follow-btn { background: #ff4d4f; border: none; color: #fff; padding: 1px 6px; font-size: 11px; border-radius: 2px; cursor: pointer; }
+        .bar-slogan { margin-top: 6px; color: #ddd; font-size: 11px; }
+
+        /* 主体内容布局 */
+        .main-container { width: 1000px; margin: 0 auto 30px auto; display: flex; background: #fff; border: 1px solid #b0b9c8; }
+        
+        /* 左侧内容面板 */
+        .left-content-panel { width: 738px; border-right: 1px solid #e4e6eb; }
+        
+        /* 看帖、图片、精品 选项卡菜单 */
+        .tab-menu-bar { background: #fafafa; border-bottom: 1px solid #e4e6eb; display: flex; height: 34px; align-items: center; padding-left: 10px; }
+        .tab-menu-item { padding: 0 15px; height: 34px; line-height: 34px; color: #333; cursor: pointer; }
+        .tab-menu-item.active { background: #fff; border-left: 1px solid #e4e6eb; border-right: 1px solid #e4e6eb; font-weight: bold; height: 35px; margin-top: -1px; }
+
+        /* 中间通栏广告区（完整不裁剪，根据你的要求使用自动高度） */
+        .mid-ad-banner { border-bottom: 1px solid #e4e6eb; background: #fff; width: 100%; }
+        .mid-ad-banner img { width: 100%; height: auto; display: block; }
+
+        /* 帖子列表包装器 */
+        .post-list-wrapper { background: #fff; }
+        
+        /* 单个帖子行样式 */
+        .post-row-item { display: flex; align-items: center; padding: 12px 15px; border-bottom: 1px solid #f2f4f7; min-height: 55px; }
+        .post-row-item:hover { background: #f7f9fc; }
+        
+        /* 左侧小灰色回复数方块 */
+        .reply-num-box { width: 40px; text-align: center; background: #f2f4f7; color: #666; padding: 2px 0; border-radius: 2px; font-size: 11px; margin-right: 15px; border: 1px solid #e1e4e9; flex-shrink: 0; }
+        
+        /* 标题、内容预览核心区 */
+        .post-main-info { flex: 1; overflow: hidden; padding-right: 10px; }
+        .post-title-line { font-size: 13px; margin-bottom: 4px; display: flex; align-items: center; }
+        .post-title-link { font-weight: normal; color: #2d64b5; font-size: 13px; }
+        .post-title-link:hover { text-decoration: underline; }
+        .post-preview-text { color: #666; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 520px; }
+        
+        /* 右侧发帖人/最后回复人 */
+        .post-author-info { width: 110px; text-align: right; color: #888; font-size: 11px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* 蓝置顶、红精品小标签 */
+        .label-badge { font-size: 11px; padding: 1px 3px; border-radius: 2px; margin-right: 5px; color: #fff; font-weight: normal; flex-shrink: 0; }
+        .label-top { background: #2d8cf0; }
+        .label-essence { background: #ff4d4f; }
+
+        /* 右侧侧边栏栏目 */
+        .right-sidebar { width: 260px; background: #fcfcfd; padding: 15px; flex-shrink: 0; }
+        .sidebar-section { border: 1px solid #e4e6eb; background: #fff; padding: 12px; margin-bottom: 15px; }
+        .sidebar-title { font-size: 12px; font-weight: bold; border-bottom: 1px solid #e4e6eb; padding-bottom: 6px; margin-bottom: 10px; color: #333; }
+        .sidebar-section p { line-height: 1.8; color: #666; }
+
+        /* 右侧吧友推荐图片展示 */
+        .sidebar-ad-img { width: 100%; height: 240px; object-fit: cover; display: block; border-radius: 2px; }
+    </style>
+</head>
+<body>
+
+    <!-- 经典百度贴吧导航顶栏 -->
+    <div class="tieba-top-nav">
+        <div class="top-left-logo">粘吧经典版<span>进入贴吧...</span></div>
+        <div class="top-right-zone">
+            <div class="search-box-container">
+                <input type="text" class="search-input" placeholder="输入关键词搜吧内贴...">
+                <button type="button" class="search-btn">吧内搜索</button>
+            </div>
+            <a href="login.html" class="login-avatar-btn">👤</a>
+        </div>
+    </div>
+
+    <!-- 贴吧头部主大 Banner 横幅 -->
+    <div class="bar-main-header">
+        <div class="bar-header-content">
+            <div class="bar-avatar-box">
+                <div class="bar-avatar-inner">海镜花<br>动画</div>
+            </div>
+            <div class="bar-text-details">
+                <div class="bar-title-row">
+                    <span class="bar-title-name">海镜花动画吧</span>
+                    <button class="follow-btn">＋关注</button>
+                </div>
+                <div class="bar-slogan">目录：个人粘吧 | 这里是关于童年动画《海镜花》的记忆。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面核心主框架 -->
+    <div class="main-container">
+        
+        <!-- 左侧面板区域 -->
+        <div class="left-content-panel">
+            <div class="tab-menu-bar">
+                <div class="tab-menu-item active">看帖</div>
+                <div class="tab-menu-item">图片</div>
+                <div class="tab-menu-item">精品</div>
+            </div>
+
+            <!-- 通栏横幅广告：完美按照上一轮你的要求自适应高度显示，完全不会切掉图片中的字 -->
+            <div class="mid-ad-banner">
+                <a href="#">
+                    <img src="image_4.jpg" alt="广告">
+                </a>
+            </div>
+
+            <!-- 纯静态帖子列表流区 -->
+            <div class="post-list-wrapper">
+                
+                <!-- 帖子 1：求资源贴 -->
+                <div class="post-row-item">
+                    <div class="reply-num-box">3</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line">
+                            <span class="label-badge label-essence">精</span>
+                            <a href="post_hmjh.html" class="post-title-link">求资源！想起来小时候看过的一个动画片</a>
+                        </div>
+                        <div class="post-preview-text">吧里有看过《海镜花》的吗，就是一个女孩有一面镜子可以穿进去。结局外面的女孩不见了...</div>
+                    </div>
+                    <div class="post-author-info">看星星的人</div>
+                </div>
+
+                <!-- 帖子 2：选角独家内幕 -->
+                <div class="post-row-item">
+                    <div class="reply-num-box">12</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line">
+                            <span class="label-badge label-top">置顶</span>
+                            <a href="fpage2.html" class="post-title-link">【独家】《海镜花》选角定了！不是苗苗，是一个不认识的新人</a>
+                        </div>
+                        <div class="post-preview-text">结果最后选了一个完全没听过名字的女孩。好像是叫王瑾岚？搜都搜不到资料...</div>
+                    </div>
+                    <div class="post-author-info">圈内百晓生</div>
+                </div>
+
+                <!-- 帖子 3：微博超话爆破 -->
+                <div class="post-row-item">
+                    <div class="reply-num-box">28</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line">
+                            <a href="fpage3.html" class="post-title-link">苗苗粉丝已经在骂了</a>
+                        </div>
+                        <div class="post-preview-text">刚去微博看了一眼，苗苗超话已经炸了。粉丝都在说“溜了苗苗大半年最后换人”...</div>
+                    </div>
+                    <div class="post-author-info">吃瓜群众不嫌事大</div>
+                </div>
+
+                <!-- 帖子 4：冷门IP质疑贴 -->
+                <div class="post-row-item">
+                    <div class="reply-num-box">7</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line">
+                            <a href="fpage4.html" class="post-title-link">你们是不是想太多了</a>
+                        </div>
+                        <div class="post-preview-text">不是……《海镜花》真的会拍吗？这动画当年收视率就很一般，豆瓣标记看过的人才几千个...</div>
+                    </div>
+                    <div class="post-author-info">佛系看剧人</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 右侧侧边栏区域 -->
+        <div class="right-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">本吧信息</div>
+                <p>
+                    吧主：暂无吧主<br>
+                    核心会员：泡泡2308<br>
+                    目录：软件及互联网
+                </p>
+            </div>
+
+            <!-- 右侧经典广告位：完美引用 image_3.png 完整不切字 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">吧友推荐</div>
+                <a href="#">
+                    <img src="image_3.jpg" alt="广告" class="sidebar-ad-img">
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

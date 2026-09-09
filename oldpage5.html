@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一路向城关吧-千度粘吧</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; background-color: #dee4ed; color: #333; }
+        
+        /* 顶部蓝色导航条与搜索栏 */
+        .top-blue-bar { background: #2d8cf0; color: #fff; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .top-blue-bar .logo { font-size: 16px; font-weight: bold; flex-shrink: 0; text-decoration: none; color: #fff; }
+        .search-form { flex: 1; display: flex; align-items: center; background: #fff; border-radius: 4px; padding: 4px 8px; }
+        .search-input { width: 100%; border: none; outline: none; font-size: 13px; color: #333; padding: 2px 4px; }
+        .search-btn { background: none; border: none; cursor: pointer; font-size: 16px; padding: 0 4px; display: flex; align-items: center; justify-content: center; }
+
+        /* 吧Header区域 - 点击头像或名字进入 oldchengguan.html */
+        .bar-header-link { text-decoration: none; color: inherit; display: block; }
+        .bar-header { background: #fff; padding: 15px; display: flex; align-items: center; border-bottom: 1px solid #d1d7e2; }
+        .bar-avatar { width: 55px; height: 55px; background: #4ba3e3; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: bold; text-align: center; line-height: 1.3; box-shadow: inset 0 0 5px rgba(0,0,0,0.2); }
+        .bar-info { margin-left: 12px; flex: 1; }
+        .bar-name { font-size: 18px; font-weight: bold; color: #000; display: flex; align-items: center; }
+        .bar-name::after { content: "＋关注"; font-size: 11px; background: #ff4d4f; color: #fff; padding: 2px 6px; border-radius: 3px; margin-left: 8px; font-weight: normal; }
+        .bar-stats { font-size: 11px; color: #777; margin-top: 4px; }
+
+        /* 导航栏 */
+        .nav-tabs { display: flex; background: #fff; border-bottom: 1px solid #d1d7e2; font-size: 14px; }
+        .tab-item { flex: 1; text-align: center; padding: 12px 0; color: #666; position: relative; }
+        .tab-item.active { color: #2d8cf0; font-weight: bold; }
+        .tab-item.active::after { content: ""; position: absolute; bottom: 0; left: 35%; width: 30%; height: 3px; background: #2d8cf0; border-radius: 2px; }
+
+        /* 广告区域 */
+        .ad-banner-1 { background: #fff; padding: 8px 10px; margin-top: 5px; border-bottom: 1px solid #d1d7e2; display: block; text-decoration: none; }
+        .ad-banner-1 img { width: 100%; height: auto; border-radius: 4px; display: block; }
+
+        /* 帖子标题区 */
+        .main-post-title { background: #fff; padding: 15px 15px 10px 15px; margin-top: 8px; font-size: 18px; font-weight: bold; color: #000; border-bottom: 1px solid #f0f0f0; line-height: 1.4; }
+
+        /* 楼层基本样式 */
+        .floor { background: #fff; padding: 15px; border-bottom: 1px solid #ecf0f5; }
+        .floor-header { display: flex; align-items: center; margin-bottom: 10px; font-size: 13px; }
+        
+        /* 圆形头像 - 点击跳转登录 */
+        .avatar-link { text-decoration: none; display: block; flex-shrink: 0; margin-right: 10px; }
+        .avatar-placeholder { width: 32px; height: 32px; background: #ccc; border-radius: 50%; cursor: pointer; transition: opacity 0.2s; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: bold; }
+        .avatar-placeholder:hover { opacity: 0.85; }
+
+        .user-info { flex: 1; }
+        .username { font-weight: bold; color: #444; text-decoration: none; }
+        .username:hover { color: #2d8cf0; }
+        .lz-badge { background: #2d8cf0; color: #fff; font-size: 9px; padding: 1px 3px; border-radius: 2px; margin-left: 4px; vertical-align: middle; display: inline-block; }
+        .floor-num-time { color: #999; font-size: 11px; margin-top: 2px; display: flex; gap: 8px; }
+        .floor-content { font-size: 15px; color: #111; word-break: break-all; margin-top: 4px; line-height: 1.6; }
+
+        /* 楼中楼楼层回复板 */
+        .sub-comments { background: #f4f6f9; padding: 10px 12px; border-radius: 4px; margin-top: 12px; font-size: 13px; border: 1px solid #e9edf3; }
+        .sub-item { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed #d1d7e2; line-height: 1.5; }
+        .sub-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .sub-username { color: #2d8cf0; font-weight: bold; text-decoration: none; }
+        .sub-time { text-align: right; color: #999; font-size: 10px; margin-top: 2px; }
+
+        /* 底部广告 */
+        .ad-box-2 { background: #fff; margin: 8px 0; padding: 12px; display: flex; align-items: center; border-top: 1px solid #d1d7e2; border-bottom: 1px solid #d1d7e2; background-color: #fcfdfe; }
+        .ad-box-2 .ad-img-container { width: 50px; height: 50px; margin-right: 12px; flex-shrink: 0; }
+        .ad-box-2 .ad-img-container img { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; }
+        .ad-box-2 .ad-text { flex: 1; }
+        .ad-box-2 .ad-title { font-size: 14px; font-weight: bold; color: #333; }
+        .ad-box-2 .ad-desc { font-size: 12px; color: #888; margin-top: 2px; }
+        .ad-box-2 .ad-btn { font-size: 12px; border: 1px solid #2d8cf0; color: #2d8cf0; padding: 4px 8px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部蓝色导航条与搜索栏 -->
+    <div class="top-blue-bar">
+        <a href=" " class="logo">千度粘吧</a >
+        <form action="search.html" method="GET" class="search-form">
+            <input type="text" name="kw" placeholder="搜索贴吧内帖子..." class="search-input" required>
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+    </div>
+
+    <!-- 吧Header区域 -->
+    <a href="oldchengguan.html" class="bar-header-link">
+        <div class="bar-header">
+            <div class="bar-avatar">一路向<br>城关吧</div>
+            <div class="bar-info">
+                <div class="bar-name">一路向城关吧</div>
+                <div class="bar-stats">关注：124 &nbsp; 帖子：12</div>
+            </div>
+        </div>
+    </a >
+
+    <div class="nav-tabs">
+        <div class="tab-item active">看帖</div>
+        <div class="tab-item">图片</div>
+        <div class="tab-item">精品</div>
+    </div>
+
+    <!-- 顶部广告：使用 image_3.jpg -->
+    <a href="timemachine.html" class="ad-banner-1">
+        <img src="image_3.jpg" alt="时光机广告栏">
+    </a >
+
+    <!-- ===== 帖子标题 ===== -->
+    <div class="main-post-title">
+        【1135】总是太过担心他人的评价怎么办
+    </div>
+
+    <!-- ===== 1楼：楼主 ===== -->
+    <div class="floor">
+        <div class="floor-header">
+            <a href="login.html" class="avatar-link" title="点击登录">
+                <div class="avatar-placeholder" style="background: #E74C8B;">写</div>
+            </a >
+            <div class="user-info">
+                <div><a href="#" class="username">伤心的太极端了吧</a ><span class="lz-badge">楼主</span></div>
+                <div class="floor-num-time"><span>1楼</span><span>2026-06-10 21:15</span></div>
+            </div>
+        </div>
+        <div class="floor-content">
+            总感觉有人在背地里说我，即使没有，想象到他们的神态也完全接受不了。。。
+        </div>
+    </div>
+
+    <!-- ===== 2楼：伤心的太极端了吧 回复自己 ===== -->
+    <div class="floor">
+        <div class="floor-header">
+            <a href="login.html" class="avatar-link" title="点击登录">
+                <div class="avatar-placeholder" style="background: #E74C8B;">写</div>
+            </a >
+            <div class="user-info">
+                <div><a href="#" class="username">伤心的太极端了吧</a ><span class="lz-badge">楼主</span></div>
+                <div class="floor-num-time"><span>2楼</span><span>2026-06-10 21:28</span></div>
+            </div>
+        </div>
+        <div class="floor-content">
+            我觉得你应该休息一下？
+        </div>
+    </div>
+
+    <!-- ===== 3楼：星星493 ===== -->
+    <div class="floor">
+        <div class="floor-header">
+            <a href="login.html" class="avatar-link" title="点击登录">
+                <div class="avatar-placeholder" style="background: #F59E0B;">星</div>
+            </a >
+            <div class="user-info">
+                <div><a href="#" class="username">星星493</a ></div>
+                <div class="floor-num-time"><span>3楼</span><span>2026-06-10 21:41</span></div>
+            </div>
+        </div>
+        <div class="floor-content">
+            深呼吸。会好的
+        </div>
+    </div>
+
+    <!-- ===== 底部广告：使用 image_4.png ===== -->
+    <div class="ad-box-2">
+        <div class="ad-img-container">
+            <img src="image_4.png" alt="广告图标">
+        </div>
+        <div class="ad-text">
+            <div class="ad-title">同城扩列聊天软件</div>
+            <div class="ad-desc">来一路向城关吧，和志同道合的人一起畅聊</div>
+        </div>
+        <div class="ad-btn">下载</div>
+    </div>
+
+    <div style="text-align: center; padding: 20px; font-size: 11px; color: #8f9bb3;">
+        ©2026 Baidu 千度粘吧客户端复古精简版
+    </div>
+
+</body>
+</html>

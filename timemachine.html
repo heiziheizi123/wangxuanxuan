@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网页时光机</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:#fff;
+    color:#111;
+    font-family:"宋体", SimSun, serif;
+    font-size:14px;
+}
+
+a{
+    color:#0000cc;
+    text-decoration:underline;
+}
+
+/* 顶部 */
+.header{
+    width:760px;
+    margin:35px auto 0;
+    border-bottom:1px solid #999;
+    padding-bottom:8px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.logo small{
+    font-size:12px;
+    font-weight:normal;
+    color:#666;
+    margin-left:12px;
+}
+
+/* 主体 */
+.main{
+    width:760px;
+    margin:25px auto;
+}
+
+.intro{
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+.search-box{
+    border:1px solid #999;
+    padding:18px;
+    background:#fff;
+}
+
+.search-title{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.search-row{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+#keyword{
+    width:520px;
+    height:30px;
+    border:1px solid #777;
+    padding:4px 7px;
+    font-family:"宋体", SimSun, serif;
+    font-size:14px;
+    outline:none;
+}
+
+#keyword:focus{
+    border-color:#000;
+}
+
+button{
+    height:30px;
+    padding:0 18px;
+    border:1px solid #777;
+    background:#eee;
+    font-family:"宋体", SimSun, serif;
+    cursor:pointer;
+}
+
+button:active{
+    background:#ddd;
+}
+
+/* 结果 */
+.result{
+    display:none;
+    margin-top:28px;
+}
+
+.result-header{
+    border-bottom:1px solid #aaa;
+    padding-bottom:5px;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.archive-info{
+    font-size:12px;
+    color:#555;
+    margin-bottom:12px;
+}
+
+.archive-box{
+    border:1px solid #aaa;
+    padding:12px;
+}
+
+.archive-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.archive-image{
+    text-align:center;
+    margin-top:15px;
+}
+
+.archive-image img{
+    max-width:100%;
+    border:1px solid #888;
+}
+
+/* 无结果 */
+.no-result{
+    display:none;
+    margin-top:28px;
+    border-top:1px solid #aaa;
+    padding-top:15px;
+}
+
+.no-result strong{
+    color:#900;
+}
+
+/* 底部 */
+.footer{
+    width:760px;
+    margin:50px auto 30px;
+    border-top:1px solid #aaa;
+    padding-top:8px;
+    color:#777;
+    font-size:12px;
+    text-align:center;
+}
+
+/* 老网页味道 */
+.counter{
+    margin-top:12px;
+    font-size:12px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">
+        网页时光机
+        <small>Web Time Machine</small>
+    </div>
+</div>
+
+<div class="main">
+
+    <div class="intro">
+        欢迎使用网页时光机。<br>
+        在下方输入网站、作品或页面名称，我们将尝试从旧网页存档中寻找相关记录。
+    </div>
+
+    <div class="search-box">
+        <div class="search-title">请输入要查找的内容：</div>
+
+        <div class="search-row">
+            <input
+                type="text"
+                id="keyword"
+                placeholder="在此输入"
+                autocomplete="off"
+            >
+            <button onclick="searchArchive()">查找存档</button>
+        </div>
+
+        <div class="counter">
+            当前收录网页：00128437 页
+        </div>
+    </div>
+
+    <div class="result" id="result">
+        <div class="result-header">
+            找到 1 条网页存档
+        </div>
+
+        <div class="archive-info">
+            存档状态：可访问　
+            最后保存时间：2008-07-16 21:43:08
+        </div>
+
+        <div class="archive-box">
+            <div class="archive-title">《海镜花》</div>
+
+            <div>
+                以下内容来自网页时光机历史存档。
+            </div>
+
+            <div class="archive-image">
+                <img src="haijing.jpg" alt="《海镜花》网页存档">
+            </div>
+        </div>
+    </div>
+
+    <div class="no-result" id="noResult">
+        <strong>没有找到相关存档。</strong><br><br>
+        请检查输入的名称是否正确，或尝试使用其他关键词。
+    </div>
+
+</div>
+
+<div class="footer">
+    网页时光机 · 历史网页存档检索系统<br>
+    仅供存档浏览使用
+</div>
+
+<script>
+function searchArchive(){
+    const input = document.getElementById("keyword");
+    const keyword = input.value.trim();
+
+    const result = document.getElementById("result");
+    const noResult = document.getElementById("noResult");
+
+    if(
+        keyword === "海镜花" ||
+        keyword === "《海镜花》"
+    ){
+        result.style.display = "block";
+        noResult.style.display = "none";
+    }else{
+        result.style.display = "none";
+        noResult.style.display = "block";
+    }
+}
+
+document.getElementById("keyword").addEventListener("keydown", function(event){
+    if(event.key === "Enter"){
+        searchArchive();
+    }
+});
+</script>
+
+</body>
+</html>

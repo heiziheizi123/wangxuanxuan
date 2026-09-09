@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>阳光青少年成长特训学校</title>
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  margin:0;
+  font-family:"微软雅黑","宋体",SimSun,Arial,sans-serif;
+  background:#e8edf3;
+  color:#333;
+  font-size:14px;
+}
+
+a{
+  color:#1a5fa8;
+}
+
+/* =========================
+   顶部
+========================= */
+
+.top{
+  background:linear-gradient(#3a7bc8,#2a5a9a);
+  color:#fff;
+  border-bottom:3px solid #1c3f6e;
+  box-shadow:0 2px 4px rgba(0,0,0,.25);
+}
+
+.top-inner{
+  width:960px;
+  max-width:100%;
+  margin:auto;
+  padding:18px 16px;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  line-height:1.35;
+  text-shadow:1px 1px 2px rgba(0,0,0,.4);
+}
+
+.slogan{
+  margin-top:6px;
+  font-size:12px;
+  line-height:1.6;
+  color:#dbe8fb;
+}
+
+/* =========================
+   导航栏
+========================= */
+
+.nav{
+  background:linear-gradient(#2a5a9a,#1c3f6e);
+  text-align:center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    0 3px 5px rgba(0,0,0,.2);
+}
+
+.nav a{
+  display:inline-block;
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  padding:11px 22px;
+  border-right:1px solid #16305a;
+  transition:background .15s;
+}
+
+.nav a:hover{
+  background:#f5a623;
+}
+
+/* =========================
+   主容器
+========================= */
+
+.wrap{
+  width:960px;
+  max-width:calc(100% - 24px);
+  margin:14px auto;
+  background:#fff;
+  border:1px solid #c7d3e0;
+  border-radius:4px;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+
+/* =========================
+   搜索
+========================= */
+
+.search{
+  background:linear-gradient(#f4f7fb,#e2e9f2);
+  padding:12px;
+  text-align:center;
+  border-bottom:1px solid #c7d3e0;
+}
+
+.search input{
+  width:580px;
+  max-width:calc(100% - 120px);
+  min-height:36px;
+  padding:8px 10px;
+  border:1px solid #a9b8ca;
+  border-radius:3px;
+  font-family:inherit;
+  font-size:14px;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.15);
+}
+
+.search input:focus{
+  outline:none;
+  border-color:#5aa0e8;
+  box-shadow:
+    inset 0 1px 3px rgba(0,0,0,.15),
+    0 0 0 2px rgba(90,160,232,.2);
+}
+
+.search button{
+  min-height:36px;
+  padding:8px 20px;
+  margin-left:4px;
+  background:linear-gradient(#5aa0e8,#2a6cc4);
+  color:#fff;
+  border:1px solid #1c4f8f;
+  border-radius:3px;
+  font-weight:bold;
+  font-family:inherit;
+  box-shadow:0 2px 3px rgba(0,0,0,.2);
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.search button:hover{
+  background:linear-gradient(#6cb0f5,#3a7cd4);
+}
+
+.search input:disabled,
+.search button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.lock-tip{
+  margin-top:8px;
+  font-size:12px;
+  line-height:1.6;
+  color:#a15c00;
+  background:#fff8e1;
+  border:1px solid #f0d78c;
+  border-radius:3px;
+  padding:6px 10px;
+  display:inline-block;
+  max-width:100%;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.05);
+}
+
+.lock-tip a{
+  color:#1a5fa8;
+  font-weight:bold;
+}
+
+.user-status{
+  color:#dbe8fb;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.user-status a{
+  color:#ffd98a;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.user-status a:hover{
+  text-decoration:underline;
+}
+
+/* =========================
+   公告
+========================= */
+
+.notice{
+  background:#fff8e1;
+  border-top:1px solid #f0d78c;
+  border-bottom:1px solid #f0d78c;
+  padding:9px 14px;
+  font-weight:bold;
+  line-height:1.7;
+  color:#a15c00;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.05);
+}
+
+/* =========================
+   大图
+========================= */
+
+.hero{
+  padding:12px;
+  background:#f4f7fb;
+}
+
+.hero img{
+  display:block;
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  border:1px solid #c7d3e0;
+  border-radius:3px;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+
+/* =========================
+   页面标题
+========================= */
+
+.title{
+  background:linear-gradient(#3a7bc8,#2a5a9a);
+  color:#fff;
+  padding:10px 14px;
+  font-size:22px;
+  line-height:1.4;
+  font-weight:bold;
+  border-left:6px solid #f5a623;
+  box-shadow:0 2px 4px rgba(0,0,0,.15);
+}
+
+/* =========================
+   内容区
+========================= */
+
+.content{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:14px;
+}
+
+.main{
+  flex:1;
+  min-width:0;
+  width:650px;
+}
+
+.side{
+  flex:0 0 260px;
+  width:260px;
+}
+
+/* =========================
+   内容卡片
+========================= */
+
+.box{
+  border:1px solid #c7d3e0;
+  margin-bottom:14px;
+  background:#fff;
+  border-radius:4px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+  overflow:hidden;
+}
+
+.box h2{
+  margin:0;
+  padding:9px 12px;
+  background:linear-gradient(#4a8ad8,#2a5a9a);
+  color:#fff;
+  font-size:16px;
+  line-height:1.5;
+  text-shadow:1px 1px 1px rgba(0,0,0,.3);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.box-body{
+  padding:12px;
+  line-height:1.8;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* =========================
+   图片网格
+========================= */
+
+.pic-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.pic-grid img{
+  display:block;
+  width:100%;
+  height:145px;
+  object-fit:cover;
+  border:1px solid #c7d3e0;
+  border-radius:3px;
+  box-shadow:0 2px 4px rgba(0,0,0,.15);
+}
+
+/* =========================
+   文本 / 按钮
+========================= */
+
+.blink{
+  color:#c0392b;
+  font-weight:bold;
+}
+
+.btn{
+  display:block;
+  text-align:center;
+  background:linear-gradient(#f5a623,#e08c00);
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  padding:10px;
+  margin-top:8px;
+  border:1px solid #b56f00;
+  border-radius:3px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.3);
+  text-shadow:1px 1px 1px rgba(0,0,0,.2);
+}
+
+.btn:hover{
+  background:linear-gradient(#ffb84d,#f09a1a);
+}
+
+/* =========================
+   页脚
+========================= */
+
+.footer{
+  background:linear-gradient(#2a5a9a,#1c3f6e);
+  color:#dbe8fb;
+  text-align:center;
+  padding:20px 12px;
+  line-height:1.8;
+  border-top:3px solid #14315a;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.2);
+}
+
+
+/* =====================================================
+   平板 / 小屏幕
+===================================================== */
+
+@media screen and (max-width:800px){
+
+  .top-inner{
+    width:100%;
+    padding:20px 16px 18px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .wrap{
+    width:auto;
+    max-width:none;
+    margin:12px;
+  }
+
+  .content{
+    flex-direction:column;
+  }
+
+  .main,
+  .side{
+    width:100%;
+    flex:auto;
+  }
+
+  .hero img{
+    height:230px;
+  }
+}
+
+
+/* =====================================================
+   手机端
+===================================================== */
+
+@media screen and (max-width:600px){
+
+  body{
+    font-size:14px;
+  }
+
+  /* 顶部加高，解决手机端头部过窄 */
+  .top{
+    min-height:96px;
+  }
+
+  .top-inner{
+    width:100%;
+    padding:21px 14px 19px;
+    text-align:center;
+  }
+
+  .logo{
+    font-size:22px;
+    line-height:1.45;
+    letter-spacing:.3px;
+  }
+
+  .slogan{
+    margin-top:7px;
+    font-size:13px;
+    line-height:1.5;
+  }
+
+  /* 导航自动换行 */
+  .nav{
+    display:flex;
+    flex-wrap:wrap;
+    width:100%;
+  }
+
+  .nav a{
+    flex:1 1 33.333%;
+    min-width:33.333%;
+    padding:11px 4px;
+    font-size:13px;
+    border-right:1px solid #16305a;
+    border-bottom:1px solid #16305a;
+    text-align:center;
+  }
+
+  .wrap{
+    width:auto;
+    max-width:none;
+    margin:10px 8px;
+    border-radius:3px;
+  }
+
+  /* 搜索区域改成上下排列 */
+  .search{
+    padding:11px 10px;
+  }
+
+  .search input{
+    display:block;
+    width:100%;
+    max-width:none;
+    min-height:44px;
+    padding:9px 10px;
+    font-size:16px;
+  }
+
+  .search button{
+    display:block;
+    width:100%;
+    min-height:44px;
+    margin:8px 0 0;
+    font-size:14px;
+  }
+
+  .lock-tip{
+    display:block;
+    width:100%;
+    margin-top:8px;
+    padding:8px 9px;
+    text-align:left;
+  }
+
+  .notice{
+    padding:9px 11px;
+    font-size:13px;
+  }
+
+  .hero{
+    padding:8px;
+  }
+
+  .hero img{
+    height:190px;
+  }
+
+  .title{
+    padding:10px 11px;
+    font-size:19px;
+    border-left-width:5px;
+  }
+
+  .content{
+    display:block;
+    padding:10px;
+  }
+
+  .main,
+  .side{
+    width:100%;
+  }
+
+  .box{
+    margin-bottom:10px;
+  }
+
+  .box h2{
+    padding:10px;
+    font-size:15px;
+  }
+
+  .box-body{
+    padding:10px;
+    line-height:1.75;
+  }
+
+  .pic-grid{
+    gap:6px;
+  }
+
+  .pic-grid img{
+    height:130px;
+  }
+
+  .btn{
+    min-height:44px;
+    padding:11px 8px;
+    font-size:14px;
+  }
+
+  .footer{
+    padding:18px 10px;
+    font-size:12px;
+  }
+}
+
+
+/* =====================================================
+   超小屏手机
+===================================================== */
+
+@media screen and (max-width:380px){
+
+  .top{
+    min-height:92px;
+  }
+
+  .top-inner{
+    padding:19px 10px 17px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  .slogan{
+    font-size:12px;
+  }
+
+  .nav a{
+    flex-basis:50%;
+    min-width:50%;
+    font-size:12px;
+    padding:10px 3px;
+  }
+
+  .wrap{
+    margin:7px 5px;
+  }
+
+  .title{
+    font-size:17px;
+  }
+
+  .hero img{
+    height:165px;
+  }
+
+  .pic-grid{
+    grid-template-columns:1fr;
+  }
+
+  .pic-grid img{
+    height:180px;
+  }
+
+  .content{
+    padding:8px;
+  }
+}
+</style></head>
+<body>
+<div class="top"><div class="top-inner"><div class="logo">★ 若苗青少年成长特训学校 ★</div><div class="slogan">专业帮助青少年解决成长困惑　·　家庭教育指导　·　行为习惯训练</div><div id="userStatus" class="user-status"></div></div><div class="nav"><a href="texunqazwsx.html">网站首页</a><a href="#about">学校介绍</a><a href="#course">特色课程</a><a href="#environment">校园环境</a><a id="navLoginLink" href="texun-login.html">家长登录</a></div></div>
+<div class="wrap">
+<div class="search">
+<form id="searchForm" action="texun-search.html" method="get"><input id="searchInput" type="text" name="q" placeholder="请输入您要搜索的内容，例如：课程、费用、报名……" required><button type="submit">搜索</button></form>
+<div id="searchLockTip" class="lock-tip" style="display:none">🔒 搜索功能仅限已登录家长使用，<a href="#" id="lockLoginLink">点击登录</a> 后即可搜索</div>
+</div>
+<div class="notice">【重要通知】本校常年招生，欢迎家长来电咨询！　联系电话：400-888-1234　报名热线：138-0000-0000</div>
+<div class="hero"><img src="texun.jpg" alt="特训学校"></div>
+<div class="title">欢迎来到阳光青少年成长特训学校官方网站</div>
+<div class="content"><main class="main">
+<div class="box" id="about"><h2>学校简介</h2><div class="box-body">阳光青少年成长特训学校是一所专注于青少年成长教育与家庭教育指导的综合性学校。学校通过生活管理、行为训练、心理辅导、文化学习等方式，帮助孩子建立良好的生活习惯，增强责任意识和独立生活能力。<p class="blink">★<u>评论反馈</u>部分由于黑客攻击已暂时关闭</p></div></div>
+<div class="box" id="course"><h2>我们的特色课程</h2><div class="box-body"><ul><li>青少年行为习惯养成训练</li><li>心理成长与情绪管理课程</li><li>亲子关系沟通辅导</li><li>生活自理与社会实践活动</li><li>文化课同步辅导</li></ul></div></div>
+<div class="box" id="environment"><h2>校园环境展示</h2><div class="box-body"><div class="pic-grid"><img src="texun1.png"><img src="texun2.png"><img src="texun3.png"><img src="texun4.png"><img src="texun5.png"><img src="texun6.png"></div></div></div>
+</main><aside class="side">
+<div class="box"><h2>快速通道</h2><div class="box-body"><a class="btn" href="texun-login.html">家长登录</a><a class="btn" href="#course">查看课程</a><a class="btn" href="#environment">校园图片</a></div></div>
+<div class="box"><h2>招生信息</h2><div class="box-body"><b>招生对象：</b>青少年学生<br><b>报名时间：</b>全年接受咨询<br><b>咨询电话：</b>400-888-1234<br><b>手机：</b>138-0000-0000</div></div>
+</aside></div></div>
+<div class="footer">阳光青少年成长特训学校 版权所有　|　ICP备案号：京ICP备00000000号<br>电话：400-888-1234</div>
+
+<script>
+// 登录状态门禁：搜索功能需家长登录（手机号）后才能使用
+const phone=localStorage.getItem("parentPhone");
+const loggedIn=!!phone;
+const searchInput=document.getElementById("searchInput");
+const searchForm=document.getElementById("searchForm");
+const lockTip=document.getElementById("searchLockTip");
+const navLoginLink=document.getElementById("navLoginLink");
+const userStatus=document.getElementById("userStatus");
+
+function maskPhone(p){return p.length===11?p.slice(0,3)+"****"+p.slice(7):p}
+
+if(loggedIn){
+  userStatus.innerHTML="欢迎，"+maskPhone(phone)+"　<a href=\"#\" id=\"logoutLink\">退出登录</a>";
+  navLoginLink.textContent="家长服务中心";
+  document.getElementById("logoutLink").addEventListener("click",function(ev){
+    ev.preventDefault();
+    localStorage.removeItem("parentPhone");
+    location.reload();
+  });
+}else{
+  // 未登录：禁用搜索输入与按钮，显示提示
+  searchInput.disabled=true;
+  searchForm.querySelector("button").disabled=true;
+  searchInput.placeholder="请先登录家长服务中心后再搜索";
+  lockTip.style.display="inline-block";
+  document.getElementById("lockLoginLink").addEventListener("click",function(ev){
+    ev.preventDefault();
+    location.href="texun-login.html?redirect="+encodeURIComponent("texun.html");
+  });
+}
+
+// 双重保险：即便输入框被启用状态被绕过，提交时仍再次校验登录态
+searchForm.addEventListener("submit",function(ev){
+  if(!localStorage.getItem("parentPhone")){
+    ev.preventDefault();
+    location.href="texun-login.html?redirect="+encodeURIComponent("texun.html");
+  }
+});
+</script>
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>网站搜索结果</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"微软雅黑","宋体",SimSun,Arial,sans-serif;background:#e8edf3;color:#333;font-size:14px}
+a{color:#1a5fa8}
+
+.top{background:linear-gradient(#3a7bc8,#2a5a9a);color:#fff;border-bottom:3px solid #1c3f6e;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.top-inner{width:960px;margin:auto;padding:14px 0;text-align:center}
+.logo{font-size:26px;font-weight:bold;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
+.sub{margin-top:5px;font-size:12px;color:#dbe8fb}
+
+.wrap{width:850px;margin:20px auto;background:#fff;border:1px solid #c7d3e0;border-radius:4px;box-shadow:0 3px 10px rgba(0,0,0,.15);padding:20px}
+
+.search{background:linear-gradient(#f4f7fb,#e2e9f2);padding:14px;text-align:center;border:1px solid #c7d3e0;border-radius:4px;margin-bottom:16px}
+.search input{width:560px;padding:8px;border:1px solid #a9b8ca;border-radius:3px;font-family:inherit;box-shadow:inset 0 1px 3px rgba(0,0,0,.15)}
+.search button{padding:8px 20px;background:linear-gradient(#5aa0e8,#2a6cc4);color:#fff;border:1px solid #1c4f8f;border-radius:3px;font-weight:bold;box-shadow:0 2px 3px rgba(0,0,0,.2);cursor:pointer}
+.search button:hover{background:linear-gradient(#6cb0f5,#3a7cd4)}
+
+.result-count{color:#777;font-size:12px;margin-bottom:10px;padding-left:2px}
+
+.result{border:1px solid #c7d3e0;border-radius:4px;padding:14px 16px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);margin-bottom:14px}
+.result h2{margin:0 0 6px;font-size:17px}
+.result h2 a{text-decoration:none;color:#1a5fa8}
+.result h2 a:hover{text-decoration:underline}
+.result .url{color:#2a8a4a;font-size:12px;margin-bottom:6px}
+.result .snippet{color:#444;line-height:1.7;font-size:13px}
+.result .snippet b{background:#fff3b0;color:#7a5200}
+
+.tag{display:inline-block;background:linear-gradient(#f5a623,#e08c00);color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;margin-left:6px;box-shadow:0 1px 2px rgba(0,0,0,.2);vertical-align:middle}
+
+.back{margin-top:16px;font-size:13px}
+</style></head>
+<body>
+<div class="top"><div class="top-inner"><div class="logo">阳光青少年成长特训学校</div><div class="sub">网站搜索</div></div></div>
+<div class="wrap">
+<div class="search"><form action="texun-search.html" method="get"><input id="searchInput" type="text" name="q" placeholder="输入关键词搜索本站内容"><button type="submit">搜索</button></form></div>
+<div id="results"></div>
+<p class="back"><a href="texunqazwsx.html">返回首页</a></p>
+</div>
+<script>
+const p=new URLSearchParams(location.search),q=(p.get("q")||"").trim();
+document.getElementById("searchInput").value=q;
+const b=document.getElementById("results");
+function e(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+// 演示用的虚构档案数据（编号/化名，非真实人物）
+const demoRecords={
+  "王瑾岚":{file:"wangjinlan.html",title:"王瑾岚改造档案",tag:"档案编号 A-09",snippet:"入学时间：2020年10月　当前状态：<b>毕业</b>　教官评语：该学员已能配合日常安排……"},
+  "wangjinlan":{file:"wangjinlan.html",title:"王瑾岚改造档案",tag:"档案编号 A-09",snippet:"入学时间：2020年10月　当前状态：<b>毕业</b>　教官评语：该学员已能配合日常安排……"},
+  "WANGJINLAN":{file:"wangjinlan.html",title:"王瑾岚改造档案",tag:"档案编号 A-09",snippet:"入学时间：2020年10月　当前状态：<b>毕业</b>　教官评语：该学员已能配合日常安排……"},
+  "评论反馈":{file:"kuchikomi.html",title:"家长的评论反馈",tag:"评论反馈",snippet:"现在由于黑客恶意攻击已关闭评论功能"}
+};
+
+if(!q){
+  b.innerHTML='<p class="result-count">请输入搜索关键词</p><div class="result"><div class="snippet">您可以搜索：课程、报名、校园、招生、学员 等内容。</div></div>';
+}else{
+  const rec=demoRecords[q];
+  if(rec){
+    b.innerHTML='<p class="result-count">找到 1 条与"'+e(q)+'"相关的结果</p>'
+      +'<div class="result"><h2><a href="'+rec.file+'">'+e(rec.title)+'</a><span class="tag">'+e(rec.tag)+'</span></h2>'
+      +'<div class="url">www.texun-school.example/'+rec.file+'</div>'
+      +'<div class="snippet">'+rec.snippet+'</div></div>';
+  }else{
+    b.innerHTML='<p class="result-count">找到与"'+e(q)+'"相关的信息</p>'
+      +'<div class="result"><h2><a href="texunqazwsx.html#course">特色课程介绍</a></h2><div class="snippet">行为习惯训练、心理成长课程、亲子沟通辅导……</div></div>'
+      +'<div class="result"><h2><a href="texunqazwsx.html#environment">校园环境展示</a></h2><div class="snippet">校园图片、生活设施一览……</div></div>';
+  }
+}
+</script>
+</body></html>

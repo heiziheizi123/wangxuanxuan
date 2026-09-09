@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一路向城关吧-千度粘吧_像狐网一样为自由而生</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "宋体", Arial, Helvetica, sans-serif; background-color: #dee4ed; color: #333; font-size: 12px; }
+        a { color: #2d64b5; text-decoration: none; }
+        a:hover { text-decoration: underline; color: #e44444; }
+
+        /* 贴吧经典顶栏 */
+        .tieba-top-nav { background: #fff; border-bottom: 1px solid #d1d7e2; height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+        .top-left-logo { font-size: 14px; font-weight: bold; color: #2d8cf0; }
+        
+        /* 搜索框与登录组合区域 */
+        .top-right-zone { display: flex; align-items: center; gap: 15px; }
+        .search-box-container { display: flex; align-items: center; background: #fff; border: 1px solid #ccc; padding: 2px; border-radius: 2px; }
+        .search-input { border: none; outline: none; padding: 4px 8px; width: 180px; font-size: 12px; }
+        .search-btn { background: #38f; color: #fff; border: none; padding: 4px 12px; cursor: pointer; font-size: 12px; border-radius: 2px; }
+        .search-btn:hover { background: #2972cc; }
+        
+        /* 圆形登录头像 */
+        .login-avatar-btn { width: 28px; height: 28px; border-radius: 50%; background: #e1e6f0; border: 1px solid #b0b9c8; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; color: #666; font-size: 14px; transition: all 0.2s; }
+        .login-avatar-btn:hover { border-color: #2d8cf0; background: #fff; }
+
+        /* 吧Banner与头部 - 已强制锁死 1000px 盒模型宽度 */
+        .bar-main-header { 
+            width: 1000px; 
+            height: 140px;
+            margin: 10px auto 0 auto; 
+            background: #2d2d2d url('https://picsum.photos/1000/150?blur=5') no-repeat center; 
+            background-size: cover; 
+            border: 1px solid #b0b9c8; 
+            border-bottom: none; 
+            position: relative; 
+            padding: 20px; 
+            display: flex; 
+            align-items: flex-end; 
+            color: #fff; 
+            box-sizing: border-box;
+        }
+        .bar-header-mask { position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); z-index: 1; }
+        .bar-header-content { position: relative; z-index: 2; display: flex; align-items: center; width: 100%; }
+        .bar-avatar-box { width: 90px; height: 90px; background: #fff; padding: 4px; border: 1px solid #000; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .bar-avatar-inner { width: 100%; height: 100%; background: #4ba3e3; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; text-align: center; line-height: 1.4; color: #fff; }
+        .bar-text-details { margin-left: 20px; flex: 1; }
+        .bar-title-row { display: flex; align-items: center; gap: 10px; }
+        .bar-title-name { font-size: 22px; font-family: "微软雅黑", sans-serif; font-weight: bold; }
+        .follow-btn { background: #ff4d4f; border: none; color: #fff; padding: 3px 10px; font-size: 12px; border-radius: 3px; cursor: pointer; }
+        .bar-slogan { margin-top: 8px; color: #ccc; font-size: 12px; }
+
+        /* 主体布局 - 保持 1000px 绝对等宽 */
+        .main-container { width: 1000px; margin: 0 auto 30px auto; display: flex; background: #fff; border: 1px solid #b0b9c8; box-sizing: border-box; }
+        
+        /* 左栏：帖子列表 */
+        .left-content-panel { width: 738px; border-right: 1px solid #e4e6eb; }
+        .tab-menu-bar { background: #f2f2f2; border-bottom: 1px solid #e4e6eb; display: flex; height: 38px; align-items: center; padding-left: 10px; }
+        .tab-menu-item { padding: 0 20px; height: 38px; line-height: 38px; color: #333; font-weight: bold; border-right: 1px solid #e4e6eb; background: #f2f2f2; }
+        .tab-menu-item.active { background: #fff; border-bottom: 1px solid #fff; margin-bottom: -1px; position: relative; height: 39px; }
+
+        /* 广告位 1 容器 */
+        .mid-ad-banner { padding: 10px 0px; margin-bottom: 20px; border-bottom: 1px solid #e4e6eb; background: #fff; }
+
+        /* 帖子列表单项 */
+        .post-list-wrapper { background: #fff; }
+        .post-row-item { display: flex; align-items: center; padding: 15px 15px; border-bottom: 1px solid #f2f4f7; }
+        .post-row-item:hover { background: #f7f9fc; }
+        .reply-num-box { width: 45px; text-align: center; background: #f2f4f7; color: #666; padding: 2px 0; border-radius: 2px; font-size: 11px; margin-right: 15px; border: 1px solid #e1e4e9; }
+        .post-main-info { flex: 1; padding-right: 20px; }
+        .post-title-line { font-size: 14px; margin-bottom: 4px; font-weight: 500; }
+        .post-preview-text { color: #666; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 480px; }
+        .post-author-info { width: 120px; text-align: right; color: #888; font-size: 11px; }
+
+        .label-badge { font-size: 11px; padding: 1px 3px; border-radius: 2px; margin-right: 5px; font-weight: normal; }
+        .label-top { background: #2d8cf0; color: #fff; }
+        .label-essence { background: #ff4d4f; color: #fff; }
+
+        /* 右栏：吧务与广告 */
+        .right-sidebar { width: 260px; background: #fcfcfd; padding: 15px; box-sizing: border-box; }
+        .sidebar-section { border: 1px solid #e4e6eb; background: #fff; padding: 12px; margin-bottom: 15px; }
+        .sidebar-title { font-size: 13px; font-weight: bold; border-bottom: 1px solid #e4e6eb; padding-bottom: 6px; margin-bottom: 10px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="tieba-top-nav">
+        <div class="top-left-logo">Baidu 粘吧经典版</div>
+        <div class="top-right-zone">
+            <div class="search-box-container">
+                <input type="text" id="tiebaSearch" class="search-input" placeholder="输入关键词搜吧内贴..." onkeydown="if(event.keyCode==13) executeSearch()">
+                <button type="button" class="search-btn" onclick="executeSearch()">吧内搜索</button>
+            </div>
+            <a href="login.html" class="login-avatar-btn" title="点击登录">👤</a>
+        </div>
+    </div>
+
+    <!-- 大Banner已经限制成和下方主容器一模一样的 1000px 宽度 -->
+    <div class="bar-main-header">
+        <div class="bar-header-mask"></div>
+        <div class="bar-header-content">
+            <a href="oldchengguan.html" class="bar-avatar-box">
+                <div class="bar-avatar-inner">一路向<br>城关</div>
+            </a>
+            <div class="bar-text-details">
+                <div class="bar-title-row">
+                    <span class="bar-title-name"><a href="oldchengguan.html" style="color:#fff; text-decoration:none;">一路向城关吧</a></span>
+                    <button class="follow-btn">＋关注</button>
+                </div>
+                <div class="bar-slogan">目录：个人粘吧 | 一路向城关</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="left-content-panel">
+            <div class="tab-menu-bar">
+                <div class="tab-menu-item active">看帖</div>
+                <div class="tab-menu-item">图片</div>
+                <div class="tab-menu-item">精品</div>
+            </div>
+
+            <!-- 广告位 1：强行撑开高度与间距 -->
+            <div class="mid-ad-banner">
+                <a href="#" onclick="alert('游戏提示：这是一个普通的同城宠物广告，似乎与主线失踪案没有直接关联。')">
+                    <img src="image_4.png" alt="广告" style="width: 100%; height: auto; object-fit: cover; display: block; border: 1px solid #edd5be; border-radius: 2px;">
+                </a>
+            </div>
+
+            <div class="post-list-wrapper" id="postListContainer">
+                <!-- 【1432】 -->
+                <div class="post-row-item" data-keywords="1432 不知道你是哪里来的野狗 匿名用户358372 土豆汤汤 用户已注销 看星星的人 城关人 小三">
+                    <div class="reply-num-box">27</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><span class="label-badge label-essence">精</span><a href="oldpage1.html">【1432】不知道你是哪里来的野狗？</a></div>
+                        <div class="post-preview-text">匿名用户358372：真是不知道你是哪里来的野狗啊喜欢在网上血口喷人，是城关人吧？我倒要看看你是第几届的哪条臭狗。</div>
+                    </div>
+                    <div class="post-author-info"><div>匿名用户358372</div></div>
+                </div>
+
+                <!-- 【1325】 -->
+                <div class="post-row-item" data-keywords="1325 暗恋 一个人 很久 小学 同校 不同班 看星星的人 转学 找不到">
+                    <div class="reply-num-box">18</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage8.html">【1325】想问一下，暗恋一个人很久了怎么办</a></div>
+                        <div class="post-preview-text">看星星的人：从小学就开始了。同班，知道她叫什么，她不知道我。后来她好像转学了，或者搬家了，反正找不到了。</div>
+                    </div>
+                    <div class="post-author-info"><div>看星星的人</div></div>
+                </div>
+
+                <!-- 【1214】 -->
+                <div class="post-row-item" data-keywords="1214 反正这里没人看得见 写小说 写游戏 自搜 内耗 评价 建议">
+                    <div class="reply-num-box">36</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><span class="label-badge label-top">置顶</span><a href="oldpage2.html">【1214】反正这里没人看得见。</a></div>
+                        <div class="post-preview-text">现在自己在写小说，虽然做出来的内容受到大部分人的欢迎，但是总是会忍不住自搜，看到不同的声音会内耗很久。</div>
+                    </div>
+                    <div class="post-author-info"><div>用户已注销</div></div>
+                </div>
+
+                <!-- 【1135】 -->
+                <div class="post-row-item" data-keywords="1135 总是太过担心他人的评价 背地里说我 想象 神态 伤心的太极端了吧 星星493">
+                    <div class="reply-num-box">12</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage5.html">【1135】总是太过担心他人的评价怎么办</a></div>
+                        <div class="post-preview-text">总感觉有人在背地里说我，即使没有，想象到他们的神态也完全接受不了……</div>
+                    </div>
+                    <div class="post-author-info"><div>匿名用户</div></div>
+                </div>
+
+                <!-- 【1103】 -->
+                <div class="post-row-item" data-keywords="1103 学校门口 奶茶店 什么时候开门 校园日常">
+                    <div class="reply-num-box">9</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="#">【1103】学校门口那家奶茶店到底什么时候开门</a></div>
+                        <div class="post-preview-text">有人知道学校门口新装修的那家奶茶店什么时候开吗？每天放学路过都想进去看看。</div>
+                    </div>
+                    <div class="post-author-info"><div>晚风吹过操场</div></div>
+                </div>
+
+                <!-- 【1025】 -->
+                <div class="post-row-item" data-keywords="1025 想改一个名字 未成年 改名 父母同意 南村群童2974 泡泡2308">
+                    <div class="reply-num-box">21</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage9.html">【1025】想改一个名字</a></div>
+                        <div class="post-preview-text">有没有人知道未成年改名需要什么条件？父母同意的话是不是就可以了？</div>
+                    </div>
+                    <div class="post-author-info"><div>匿名用户</div></div>
+                </div>
+
+                <!-- 【997】 -->
+                <div class="post-row-item" data-keywords="997 重看 海镜花 朵朵 镜子 学校 作业 用户已注销 星星493">
+                    <div class="reply-num-box">16</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage6.html">【997】重看《海镜花》</a></div>
+                        <div class="post-preview-text">小时候觉得朵朵好可怜，被关在镜子里出不来。现在再看，觉得外面的那个朵朵……也不能说是坏人。</div>
+                    </div>
+                    <div class="post-author-info"><div>伤心的太极端了吧</div></div>
+                </div>
+
+                <!-- 【988】 -->
+                <div class="post-row-item" data-keywords="988 操场 大槐树 以前 记得 校园日常">
+                    <div class="reply-num-box">14</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="#">【988】有没有人记得以前操场边上的那棵树</a></div>
+                        <div class="post-preview-text">小时候总觉得那棵树特别大，夏天一群人躲在下面乘凉。现在回去不知道还在不在。</div>
+                    </div>
+                    <div class="post-author-info"><div>南墙边的夏天</div></div>
+                </div>
+
+                <!-- 【953】 -->
+                <div class="post-row-item" data-keywords="953 毕业 多年 回学校 看看 校园 怀念">
+                    <div class="reply-num-box">7</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="password1.html">【953】记一个加密方法</a></div>
+                        <div class="post-preview-text">内容：
+Atbash
+A=Z
+B=Y
+C=X
+D=W
+E=V
+F=U
+G=T
+H=S
+I=R
+J=Q
+K=P
+L=O
+M=N
+DZMTQRMOZM2008
+反过来也一样。</div>
+                    </div>
+                    <div class="post-author-info"><div>晚风吹过操场</div></div>
+                </div>
+
+
+                <!-- 【896】 -->
+                <div class="post-row-item" data-keywords="896 写给小时候的自己 不舒服 自己的问题 现在知道了">
+                    <div class="reply-num-box">20</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage10.html">【896】写给小时候的自己</a></div>
+                        <div class="post-preview-text">你不知道发生了什么，没关系。你觉得不舒服，是对的。你觉得是自己的问题，不是的。你现在知道了，那就够了。</div>
+                    </div>
+                    <div class="post-author-info"><div>用户已注销</div></div>
+                </div>
+
+                <!-- 【724】 -->
+                <div class="post-row-item" data-keywords="724 李导 xq 学校 电影 器材室 三年级 女孩 毕业生">
+                    <div class="reply-num-box">43</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage7.html">【724】有关李导xq一事</a></div>
+                        <div class="post-preview-text">这件事记得还是我六年级的事。记得当时导演来我们学校，说要翻拍一个电影……希望他能获得应有的惩罚。</div>
+                    </div>
+                    <div class="post-author-info"><div>匿名用户</div></div>
+                </div>
+
+                <!-- 【689】 -->
+                <div class="post-row-item" data-keywords="689 小学暗恋 女孩子 掀裙子 道歉 朋友 内向 城关">
+                    <div class="reply-num-box">58</div>
+                    <div class="post-main-info">
+                        <div class="post-title-line"><a href="oldpage11.html">【689】小学暗恋一个女孩子</a></div>
+                        <div class="post-preview-text">现在初二了，想起来以前因为喜欢她总欺负她，当时的一句玩笑，她竟然退学了，感觉自己弱智，求大家把我骂醒！</div>
+                    </div>
+                    <div class="post-author-info"><div>看星星的人</div></div>
+                </div>
+            </div></div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">本吧信息</div>
+                <p style="line-height: 1.8; color:#666;">
+                    吧主：晚风吹过操场<br>
+                    核心会员：南墙边的夏天<br>
+                    目录：个人粘吧 | 一路向城关
+                </p>
+            </div>
+            
+            <!-- 侧边栏广告位：固定 240px 高度 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">吧友推荐</div>
+                <a href="login.html" style="display: block; text-decoration: none;">
+                    <img src="image_3.png" alt="广告" style="width: 100%; height: 240px; object-fit: cover; display: block; border: 1px dashed #9bc1ff; border-radius: 4px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function executeSearch() {
+            var val = document.getElementById('tiebaSearch').value.trim();
+            if(val !== '') {
+                window.location.href = "search.html?kw=" + encodeURIComponent(val);
+            }
+        }
+        
+        document.getElementById('tiebaSearch').addEventListener('input', function(e){
+            var filter = e.target.value.toLowerCase();
+            var rows = document.querySelectorAll('.post-row-item');
+            rows.forEach(function(row){
+                var keywords = row.getAttribute('data-keywords').toLowerCase();
+                if(keywords.indexOf(filter) > -1) { row.style.display = ''; } else { row.style.display = 'none'; }
+            });
+        });
+    </script>
+</body>
+</html>
